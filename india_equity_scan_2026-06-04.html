@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇳 India Equity Scan — June 4, 2026 | Nifty 23,202</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 0;
+  }
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 28px 32px;
+    border-bottom: 4px solid #e94560;
+  }
+  .header-flag { font-size: 36px; display: inline-block; margin-right: 10px; vertical-align: middle; }
+  .header-title { font-size: 22px; font-weight: 700; display: inline-block; vertical-align: middle; }
+  .header-subtitle { margin-top: 6px; color: #a8b2d8; font-size: 13px; }
+  .header-date { float: right; text-align: right; color: #a8b2d8; font-size: 12px; margin-top: 4px; }
+  .header-indices {
+    display: flex; gap: 24px; margin-top: 18px; flex-wrap: wrap;
+  }
+  .idx-chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 8px 14px;
+    min-width: 140px;
+  }
+  .idx-chip .idx-name { font-size: 11px; color: #a8b2d8; text-transform: uppercase; letter-spacing: 0.5px; }
+  .idx-chip .idx-val { font-size: 18px; font-weight: 700; color: #fff; margin: 2px 0; }
+  .idx-chip .idx-chg { font-size: 12px; }
+  .red { color: #ff6b6b; }
+  .green { color: #51cf66; }
+  .orange { color: #ffa94d; }
+  /* SECTIONS */
+  .section {
+    padding: 22px 32px;
+    border-bottom: 1px solid #eef0f4;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f3460;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, #e94560 0%, transparent 100%);
+    border-radius: 2px;
+  }
+  /* ALERT BOX */
+  .alert {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .alert-red { background: #fff5f5; border-left: 4px solid #e94560; color: #c0392b; }
+  .alert-green { background: #f0fff4; border-left: 4px solid #51cf66; color: #1e7a3c; }
+  .alert-blue { background: #f0f4ff; border-left: 4px solid #4c6ef5; color: #2b4aaf; }
+  .alert-orange { background: #fff9f0; border-left: 4px solid #ffa94d; color: #b86300; }
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th {
+    background: #0f3460;
+    color: #fff;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  }
+  td { padding: 7px 10px; border-bottom: 1px solid #f0f2f5; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafbfc; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-green { background: #d3f9d8; color: #1a6b2a; }
+  .badge-red { background: #ffe3e3; color: #c0392b; }
+  .badge-blue { background: #dbe4ff; color: #2b4aaf; }
+  .badge-orange { background: #fff3bf; color: #7c5c00; }
+  /* DECISION TABLE */
+  .buy { color: #1e7a3c; font-weight: 700; }
+  .watch { color: #b86300; font-weight: 700; }
+  .avoid { color: #c0392b; font-weight: 700; }
+  /* GRID */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  /* NEWS */
+  .news-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-headline { font-weight: 600; color: #1a1a2e; font-size: 13px; margin-bottom: 4px; }
+  .news-meta { font-size: 12px; color: #6b7280; }
+  .news-impact { margin-top: 4px; font-size: 12px; }
+  /* FOOTER */
+  .footer {
+    background: #f8f9fa;
+    padding: 18px 32px;
+    font-size: 11px;
+    color: #868e96;
+    text-align: center;
+    border-top: 2px solid #e94560;
+    line-height: 1.8;
+  }
+  @media (max-width: 600px) {
+    .two-col { grid-template-columns: 1fr; }
+    .header-indices { gap: 12px; }
+    .section { padding: 18px 16px; }
+    .header { padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div style="overflow:hidden;">
+      <div class="header-date">
+        Generated: 07:46 IST<br>
+        Thursday, June 4, 2026<br>
+        Pre-Market Edition
+      </div>
+      <span class="header-flag">🇮🇳</span>
+      <span class="header-title">India Equity Daily Intelligence Report</span>
+    </div>
+    <div class="header-subtitle">Comprehensive pre-market scan for NSE &amp; BSE | June 4, 2026</div>
+    <div class="header-indices">
+      <div class="idx-chip">
+        <div class="idx-name">Nifty 50</div>
+        <div class="idx-val">23,202</div>
+        <div class="idx-chg red">▼ 281 (-1.20%)</div>
+      </div>
+      <div class="idx-chip">
+        <div class="idx-name">Sensex</div>
+        <div class="idx-val">73,727</div>
+        <div class="idx-chg red">▼ 923 (-1.24%)</div>
+      </div>
+      <div class="idx-chip">
+        <div class="idx-name">Nifty Bank</div>
+        <div class="idx-val">53,130</div>
+        <div class="idx-chg red">▼ 585 (-1.09%)</div>
+      </div>
+      <div class="idx-chip">
+        <div class="idx-name">SGX Nifty</div>
+        <div class="idx-val">~23,150</div>
+        <div class="idx-chg orange">▼ Weak open</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: MARKET OVERVIEW -->
+  <div class="section">
+    <div class="section-title">📊 1. Market Overview</div>
+
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Last Close (Jun 3)</th>
+        <th>Day Change</th>
+        <th>YTD</th>
+        <th>Key Support</th>
+        <th>Key Resistance</th>
+      </tr>
+      <tr>
+        <td><strong>Nifty 50</strong></td>
+        <td>23,202</td>
+        <td class="red">▼ 281 (-1.20%)</td>
+        <td class="red">~-3.2%</td>
+        <td>22,900 / 22,600</td>
+        <td>23,500 / 23,800</td>
+      </tr>
+      <tr>
+        <td><strong>Sensex</strong></td>
+        <td>73,727</td>
+        <td class="red">▼ 923 (-1.24%)</td>
+        <td class="red">~-3.0%</td>
+        <td>73,000 / 72,200</td>
+        <td>74,500 / 75,500</td>
+      </tr>
+      <tr>
+        <td><strong>Nifty Bank</strong></td>
+        <td>53,130</td>
+        <td class="red">▼ 585 (-1.09%)</td>
+        <td class="red">~-2.8%</td>
+        <td>52,500 / 52,000</td>
+        <td>53,700 / 54,200</td>
+      </tr>
+      <tr>
+        <td><strong>Nifty Midcap 150</strong></td>
+        <td>~19,800</td>
+        <td class="red">▼ ~0.8%</td>
+        <td class="red">~-1.5%</td>
+        <td>19,400 / 19,000</td>
+        <td>20,200 / 20,500</td>
+      </tr>
+      <tr>
+        <td><strong>Nifty Smallcap 250</strong></td>
+        <td>~8,950</td>
+        <td class="orange">▼ ~0.5%</td>
+        <td class="green">+1.2%</td>
+        <td>8,700 / 8,500</td>
+        <td>9,200 / 9,500</td>
+      </tr>
+    </table>
+
+    <div style="margin-top:14px;">
+      <div class="alert alert-blue">
+        <strong>📌 Technical View:</strong> Nifty broke below the 23,300 support on June 3 following Middle East tension escalation and FII selling. Bears now target 22,900 (200 DMA zone). A decisive close above 23,500 is needed to resume the uptrend. Intraday traders should watch 23,000 as a critical psychological level.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: GLOBAL CUES -->
+  <div class="section">
+    <div class="section-title">🌐 2. Overnight Global Cues</div>
+    <div class="two-col">
+      <div>
+        <strong style="font-size:13px; color:#0f3460;">🇺🇸 US Markets (Jun 3, 2026)</strong>
+        <table style="margin-top:8px;">
+          <tr>
+            <th>Index</th><th>Close</th><th>Change</th>
+          </tr>
+          <tr><td>S&amp;P 500</td><td>~7,540</td><td class="red">▼ -0.74%</td></tr>
+          <tr><td>Nasdaq</td><td>~22,100</td><td class="red">▼ -0.89%</td></tr>
+          <tr><td>Dow Jones</td><td>~42,800</td><td class="red">▼ -1.21%</td></tr>
+          <tr><td>Russell 2000</td><td>~2,180</td><td class="red">▼ -1.25%</td></tr>
+        </table>
+        <div class="alert alert-red" style="margin-top:10px; font-size:12px;">
+          <strong>Trigger:</strong> US–Iran tensions reignited, crude oil spiked. US 10-yr yield rose. S&P 500 snapped its 9-day win streak. Negative cue for Indian markets today.
+        </div>
+      </div>
+      <div>
+        <strong style="font-size:13px; color:#0f3460;">🌏 Asian Markets (Jun 4 Morning)</strong>
+        <table style="margin-top:8px;">
+          <tr>
+            <th>Index</th><th>Direction</th><th>Note</th>
+          </tr>
+          <tr><td>Nikkei 225</td><td class="green">▲ +2.57% (Jun 3)</td><td>Strong chip rally</td></tr>
+          <tr><td>Hang Seng</td><td class="red">▼ Negative</td><td>Geopolitical drag</td></tr>
+          <tr><td>SGX Nifty</td><td class="red">▼ Weak</td><td>~23,150 futures</td></tr>
+          <tr><td>Kospi</td><td class="orange">▶ Mixed</td><td>—</td></tr>
+        </table>
+        <div class="alert alert-orange" style="margin-top:10px; font-size:12px;">
+          <strong>Crude Oil:</strong> Brent ~$85+ on Middle East tensions. Negative for India (import-dependent). Watch OMCs and tyre stocks.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: FII/DII -->
+  <div class="section">
+    <div class="section-title">💰 3. FII / DII Activity (Jun 3, 2026)</div>
+    <div class="two-col">
+      <div class="alert alert-red">
+        <strong>FII (Foreign Institutional Investors)</strong><br>
+        Net Sold: <strong>₹5,617 Cr</strong> in cash segment<br>
+        <span style="font-size:12px;">Reducing exposure amid Middle East energy shock &amp; rising US yields. F&O data shows protective put buying — defensive repositioning rather than panic exit.</span>
+      </div>
+      <div class="alert alert-green">
+        <strong>DII (Domestic Institutional Investors)</strong><br>
+        Net Bought: <strong>₹5,741 Cr</strong> in cash segment<br>
+        <span style="font-size:12px;">DIIs absorbed FII selling effectively. Mutual fund SIP inflows remain robust. DII buying provided a floor to the market, limiting downside to ~1.2%.</span>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#6b7280; margin-top:6px;">Sources: <a href="https://trendlyne.com/macro-data/fii-dii/latest/cash-pastmonth/" style="color:#4c6ef5;">Trendlyne FII/DII</a> | <a href="https://www.nseindia.com/reports/fii-dii" style="color:#4c6ef5;">NSE India</a></p>
+  </div>
+
+  <!-- SECTION 4: TOP MOVERS -->
+  <div class="section">
+    <div class="section-title">📈 4. Top Movers</div>
+
+    <strong style="color:#1e7a3c; font-size:13px;">🟢 TOP GAINERS (Jun 2–3, 2026)</strong>
+    <table style="margin-top:6px;">
+      <tr>
+        <th>Stock (NSE)</th><th>Cap</th><th>Move</th><th>Reason</th>
+      </tr>
+      <tr>
+        <td><strong>NHPC</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="green">+5.1%</td>
+        <td>Govt exercises greenshoe in OFS (oversubscribed 3.47x). Retail window opened Jun 3. Strong govt backing signal.</td>
+      </tr>
+      <tr>
+        <td><strong>JM Financial</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="green">+8.5%</td>
+        <td>Strong institutional interest; financials re-rating momentum amid improving NBFC sentiment.</td>
+      </tr>
+      <tr>
+        <td><strong>IFCI</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="green">+6.9%</td>
+        <td>PSU financials re-rating; short-covering and value-buying in beaten-down PSU financials.</td>
+      </tr>
+      <tr>
+        <td><strong>Zensar Tech</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="green">+5.2%</td>
+        <td>IT mid-cap contrarian buying; valuations attractive post sector correction.</td>
+      </tr>
+      <tr>
+        <td><strong>Data Patterns</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="green">+5.1%</td>
+        <td>Defence electronics; beneficiary of ₹6.81L Cr defence budget. Strong order pipeline.</td>
+      </tr>
+      <tr>
+        <td><strong>TCS</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="green">+7.0% (Jun 2)</td>
+        <td>IT sector rotation/value buying on oversold conditions; FY27 outlook re-rating.</td>
+      </tr>
+    </table>
+
+    <strong style="color:#c0392b; font-size:13px; display:block; margin-top:14px;">🔴 TOP LOSERS (Jun 2–3, 2026)</strong>
+    <table style="margin-top:6px;">
+      <tr>
+        <th>Stock (NSE)</th><th>Cap</th><th>Move</th><th>Reason</th>
+      </tr>
+      <tr>
+        <td><strong>ITC</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="red">-5%+</td>
+        <td>GST 2.0 cigarette tax hike — total tax burden now 65–75% of retail price. 52-week low.</td>
+      </tr>
+      <tr>
+        <td><strong>Wockhardt</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="red">-8.4%</td>
+        <td>Profit booking after recent sharp rally; regulatory/approval overhang in pharma.</td>
+      </tr>
+      <tr>
+        <td><strong>Force Motors</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="red">-5.4%</td>
+        <td>Auto sector weakness; rising input costs from crude oil spike.</td>
+      </tr>
+      <tr>
+        <td><strong>Godfrey Phillips</strong></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="red">-3%+</td>
+        <td>Collateral damage from cigarette GST 2.0 hike alongside ITC.</td>
+      </tr>
+      <tr>
+        <td><strong>NTPC</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="red">-3.0%</td>
+        <td>Profit booking in PSU energy after recent outperformance; sector rotation.</td>
+      </tr>
+      <tr>
+        <td><strong>Physicswallah</strong></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td class="red">-4.7%</td>
+        <td>EdTech sentiment negative; profitability concerns in listed ed-tech space.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION 5: FUNDAMENTAL PICKS -->
+  <div class="section">
+    <div class="section-title">🏆 5. Fundamental Picks (Quality Screener)</div>
+    <div class="alert alert-blue" style="margin-bottom:12px; font-size:12px;">
+      Screen criteria: ROE &gt;15% | D/E &lt;0.5 | Revenue/Profit growth &gt;15% YoY | PEG &lt;1.5
+      <br>Source: <a href="https://www.screener.in/screens/66846/high-roe-low-debt/" style="color:#4c6ef5;">Screener.in</a>
+    </div>
+    <table>
+      <tr>
+        <th>Stock</th><th>Cap</th><th>ROE</th><th>D/E</th><th>Rev Growth</th><th>PAT Growth</th><th>PEG</th><th>View</th>
+      </tr>
+      <tr>
+        <td><strong>APL Apollo Tubes</strong><br><small style="color:#6b7280;">APLAPOLLO</small></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="green">~22%</td>
+        <td class="green">0.1</td>
+        <td class="green">18%</td>
+        <td class="green">21%</td>
+        <td>~1.2</td>
+        <td><span class="badge badge-green">Quality Buy</span></td>
+      </tr>
+      <tr>
+        <td><strong>Dixon Technologies</strong><br><small style="color:#6b7280;">DIXON</small></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="green">~28%</td>
+        <td class="green">0.2</td>
+        <td class="green">35%+</td>
+        <td class="green">40%+</td>
+        <td>~1.3</td>
+        <td><span class="badge badge-green">PLI Beneficiary</span></td>
+      </tr>
+      <tr>
+        <td><strong>Kaynes Technology</strong><br><small style="color:#6b7280;">KAYNES</small></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="green">~20%</td>
+        <td class="green">0.3</td>
+        <td class="green">30%+</td>
+        <td class="green">35%+</td>
+        <td>~1.4</td>
+        <td><span class="badge badge-green">EMS Leader</span></td>
+      </tr>
+      <tr>
+        <td><strong>Afcons Infrastructure</strong><br><small style="color:#6b7280;">AFCONS</small></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="green">~16%</td>
+        <td class="green">0.4</td>
+        <td class="green">22%</td>
+        <td class="green">18%</td>
+        <td>~1.2</td>
+        <td><span class="badge badge-green">Infra Capex</span></td>
+      </tr>
+      <tr>
+        <td><strong>HDFC Bank</strong><br><small style="color:#6b7280;">HDFCBANK</small></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="green">~17%</td>
+        <td>N/A (bank)</td>
+        <td class="green">15%+</td>
+        <td class="green">16%</td>
+        <td>~1.3</td>
+        <td><span class="badge badge-green">Defensive Bet</span></td>
+      </tr>
+      <tr>
+        <td><strong>BEL (Bharat Electronics)</strong><br><small style="color:#6b7280;">BEL</small></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="green">~25%</td>
+        <td class="green">0.0</td>
+        <td class="green">20%+</td>
+        <td class="green">22%</td>
+        <td>~1.1</td>
+        <td><span class="badge badge-green">Defence Gem</span></td>
+      </tr>
+      <tr>
+        <td><strong>Trendlyne Screen</strong><br><small style="color:#6b7280;">See source</small></td>
+        <td><span class="badge badge-orange">Small</span></td>
+        <td colspan="5" style="color:#6b7280; font-style:italic;">→ Run custom screen at <a href="https://trendlyne.com/equity/screener/" style="color:#4c6ef5;">Trendlyne Screener</a> for live PEG/ROE data</td>
+        <td>—</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION 6: TECHNICAL SIGNALS -->
+  <div class="section">
+    <div class="section-title">📉 6. Technical Signals</div>
+    <table>
+      <tr>
+        <th>Stock</th><th>Setup</th><th>Signal</th><th>Key Level</th><th>Risk</th>
+      </tr>
+      <tr>
+        <td><strong>YES Bank</strong></td>
+        <td>Approaching 52-week high</td>
+        <td><span class="badge badge-green">RSI 64.2 — Bullish</span></td>
+        <td>Break above ₹24.30</td>
+        <td>Stop at ₹22.50</td>
+      </tr>
+      <tr>
+        <td><strong>BEL</strong></td>
+        <td>Golden Cross setup (50 DMA &gt; 200 DMA)</td>
+        <td><span class="badge badge-green">Bullish crossover</span></td>
+        <td>Hold above ₹295</td>
+        <td>Stop at ₹280</td>
+      </tr>
+      <tr>
+        <td><strong>Hitachi Energy</strong></td>
+        <td>Near 52-week high; volume spike</td>
+        <td><span class="badge badge-green">Strong momentum</span></td>
+        <td>Break above ATH</td>
+        <td>Trailing stop 5%</td>
+      </tr>
+      <tr>
+        <td><strong>ACME Solar</strong></td>
+        <td>Near 52-week high; renewable play</td>
+        <td><span class="badge badge-green">Breakout watch</span></td>
+        <td>Watch ₹220 breakout</td>
+        <td>Hold above ₹205</td>
+      </tr>
+      <tr>
+        <td><strong>ITC</strong></td>
+        <td>52-week LOW — fresh breakdown</td>
+        <td><span class="badge badge-red">RSI oversold — ≤30</span></td>
+        <td>Support at ₹330</td>
+        <td><strong>Avoid until clarity on tax</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Infosys</strong></td>
+        <td>RSI oversold after 2-6% fall</td>
+        <td><span class="badge badge-orange">Contrarian watch</span></td>
+        <td>Support ₹1,400–1,420</td>
+        <td>For long-term accum.</td>
+      </tr>
+      <tr>
+        <td><strong>Nifty 50 Index</strong></td>
+        <td>Break of 23,300 support</td>
+        <td><span class="badge badge-red">Bearish short-term</span></td>
+        <td>Next support: 22,900</td>
+        <td>Resistance: 23,500</td>
+      </tr>
+    </table>
+    <p style="font-size:12px; color:#6b7280; margin-top:8px;">Sources: <a href="https://in.tradingview.com/ideas/52weekhighs/" style="color:#4c6ef5;">TradingView</a> | <a href="https://dhan.co/stocks/market/breakout-stocks/" style="color:#4c6ef5;">Dhan Breakout Stocks</a></p>
+  </div>
+
+  <!-- SECTION 7: NEWS & SENTIMENT -->
+  <div class="section">
+    <div class="section-title">📰 7. News &amp; Sentiment</div>
+
+    <div class="news-item">
+      <div class="news-headline">1. 🛢️ US–Iran Tensions Spike Oil Above $85 — Markets Rattled</div>
+      <div class="news-meta">CNBC | June 3, 2026</div>
+      <div class="news-impact"><strong>Impact:</strong> <span class="red">Negative for India</span> — Rising crude hurts CAD, pressures OMCs (HPCL, BPCL, IOC), tyre cos (Apollo Tyres, MRF), aviation (IndiGo, SpiceJet). Positive for upstream E&amp;P (ONGC, Oil India).</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">2. 📉 GST 2.0: Cigarette Tax Hike Sends ITC to 52-Week Low</div>
+      <div class="news-meta">Bloomberg / Upstox | June 3, 2026</div>
+      <div class="news-impact"><strong>Impact:</strong> <span class="red">Sector negative.</span> ITC fell 5%+. Godfrey Phillips also hit. Total tax burden on cigarettes now 65–75% of retail price (40% GST + per-stick excise duty). Volume risk for FY27 is significant.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">3. ⚡ NHPC OFS Oversubscribed 3.47x — Govt Exercises Greenshoe</div>
+      <div class="news-meta">Business Standard | June 3, 2026</div>
+      <div class="news-impact"><strong>Impact:</strong> <span class="green">Positive for NHPC.</span> Govt selling 6% stake at ₹71 floor (8% discount). Strong retail demand. Long-term investors should watch for post-OFS stabilization entry.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">4. 💻 IT Sector Volatility: TCS +7%, Infosys −2-6% on COMPUTEX 2026 AI News</div>
+      <div class="news-meta">Zerodha Pulse | June 4, 2026</div>
+      <div class="news-impact"><strong>Impact:</strong> <span class="orange">Mixed.</span> TCS rallied on value buying; broader IT indices fragile. FY27 guidance from Infosys: revenue growth 1.5–3.5%, margins 20–22%. Sector underperformed market in FY26 but valuations now attractive for 12-month horizon.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">5. 🏦 RBI MPC Meeting (Jun 3–5): Repo Rate Expected Unchanged at 5.25%</div>
+      <div class="news-meta">BusinessToday / Goodreturns | June 3, 2026</div>
+      <div class="news-impact"><strong>Impact:</strong> <span class="orange">Neutral-to-positive.</span> Rate decision announcement at 10 AM on June 5. Market expects status quo. Governor Sanjay Malhotra's commentary on inflation, liquidity &amp; West Asia risks will be key. Positive surprise (dovish tone) could support banks and rate-sensitives.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: ANNUAL REPORT HOTSPOTS -->
+  <div class="section">
+    <div class="section-title">📋 8. Annual Report &amp; Concall Hotspots</div>
+
+    <table>
+      <tr>
+        <th>Company</th><th>Event</th><th>Key Highlights</th><th>Flag</th>
+      </tr>
+      <tr>
+        <td><strong>APL Apollo Tubes</strong><br><small>APLAPOLLO</small></td>
+        <td>Q4 FY26 Concall (May 4)</td>
+        <td>Revenue ₹23,079 Cr FY26 (+strong YoY); EBITDA/ton ₹5,500 sustainable; FY27 capex ₹500–600 Cr funded from internal accruals; 1 MT capacity addition over 2–2.5 years (₹1,400–1,500 Cr total).</td>
+        <td><span class="badge badge-green">✅ Bullish</span></td>
+      </tr>
+      <tr>
+        <td><strong>Afcons Infrastructure</strong><br><small>AFCONS</small></td>
+        <td>Q4 FY26 Concall (May 19)</td>
+        <td>FY27 capex guided at ₹725 Cr; order booking target ₹30,000 Cr. Strong infra pipeline from govt spending.</td>
+        <td><span class="badge badge-green">✅ Bullish</span></td>
+      </tr>
+      <tr>
+        <td><strong>Infosys</strong><br><small>INFY</small></td>
+        <td>Q4 FY26 Results (Apr 23)</td>
+        <td>FY26 revenue $20.2B (+3.1% CC); Q4 margin 20.9%. FY27 guidance: 1.5–3.5% CC growth, margin 20–22%. TCV large deals $14.9B. Conservative guidance reflects macro caution.</td>
+        <td><span class="badge badge-orange">⚠️ Watch guidance</span></td>
+      </tr>
+      <tr>
+        <td><strong>Adani Group</strong><br><small>Multiple</small></td>
+        <td>FY26 Annual Report</td>
+        <td>Record capex ₹1.52 lakh Cr in FY26 — entering intensive asset-commissioning phase across ports, energy, airports. High leverage remains a watch item.</td>
+        <td><span class="badge badge-orange">⚠️ Monitor debt</span></td>
+      </tr>
+      <tr>
+        <td><strong>ITC Ltd</strong><br><small>ITC</small></td>
+        <td>Annual Report / FY26</td>
+        <td>Cigarette segment under structural pressure from GST 2.0. Diversification into FMCG, hotels, agribusiness may offset partially. Watch for FY27 volume guidance.</td>
+        <td><span class="badge badge-red">🚨 Tax risk</span></td>
+      </tr>
+    </table>
+    <p style="font-size:12px; color:#6b7280; margin-top:8px;">Sources: <a href="https://scanx.trade/stock-market-news/companies/apl-apollo-tubes-reports-strong-fy26-performance-with-revenue-of-23-079-crores/39263366" style="color:#4c6ef5;">APL Apollo Concall</a> | <a href="https://scanx.trade/stock-market-news/companies/afcons-uploads-q4-and-fy26-earnings-call-audio/40740918" style="color:#4c6ef5;">Afcons Concall</a> | <a href="https://trendlyne.com/conference-calls/" style="color:#4c6ef5;">Trendlyne Concalls</a></p>
+  </div>
+
+  <!-- SECTION 9: SECTOR SPOTLIGHT -->
+  <div class="section">
+    <div class="section-title">🔦 9. Sector Spotlight: Defence &amp; Electronics Manufacturing</div>
+
+    <div class="alert alert-green">
+      <strong>Why Defence Today?</strong> India's defence budget hit a record ₹6.81 lakh crore in Union Budget 2026. BEL has a ₹75,000 Cr order book. The Middle East energy crisis amplifies India's urgency to indigenise defence production under "Atmanirbhar Bharat." Export target of ₹50,000 Cr by 2029. PLI-linked EMS (Electronics Manufacturing Services) is a parallel tailwind.
+    </div>
+
+    <table style="margin-top:10px;">
+      <tr>
+        <th>Stock</th><th>Why Watch</th><th>Trigger</th><th>Risk</th>
+      </tr>
+      <tr>
+        <td><strong>BEL (NASDAQ: BEL)</strong><br><small>NSE: BEL</small></td>
+        <td>₹75,000 Cr order book; radars, EW systems, BMS. Debt-free. ROE 25%+.</td>
+        <td>Golden cross forming; geopolitical events boost order flows</td>
+        <td>Execution delays; margin pressure on new products</td>
+      </tr>
+      <tr>
+        <td><strong>Data Patterns</strong><br><small>NSE: DATAPATT</small></td>
+        <td>Defence electronics niche player; export potential high.</td>
+        <td>+5% move on Jun 2; order pipeline expanding rapidly</td>
+        <td>Small-cap; low liquidity; high PE</td>
+      </tr>
+      <tr>
+        <td><strong>Dixon Technologies</strong><br><small>NSE: DIXON</small></td>
+        <td>EMS leader; PLI beneficiary across mobile, IT hardware, telecom. ROE 28%+.</td>
+        <td>Revenue +35%+ YoY; strong client wins (Samsung, Nokia, Xiaomi)</td>
+        <td>Customer concentration; margin pressure in consumer electronics</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION 10: DECISION FRAMEWORK -->
+  <div class="section">
+    <div class="section-title">⚖️ 10. Buy / Watch / Avoid — Decision Framework</div>
+    <table>
+      <tr>
+        <th>#</th><th>Stock (NSE)</th><th>Cap</th><th>Verdict</th><th>One-Line Reason</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><strong>BEL</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="buy">BUY</td>
+        <td>Record order book, debt-free, golden cross forming; defence budget tailwind structural.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>HDFC Bank</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="buy">BUY</td>
+        <td>Best-in-class private bank; attractive valuation, RBI status quo = margin stability.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>APL Apollo Tubes</strong></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="buy">BUY</td>
+        <td>Consistent compounder; capex from internal accruals; EBITDA/ton guidance intact.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Dixon Technologies</strong></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="buy">BUY</td>
+        <td>PLI + EMS structural story; revenue +35%+; high ROE, manageable debt.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>NHPC</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="watch">WATCH</td>
+        <td>OFS creates near-term supply overhang at ₹71; accumulate post-OFS stabilization.</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Infosys (INFY)</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="watch">WATCH</td>
+        <td>Valuations attractive; FY27 guidance conservative (1.5–3.5%); oversold technically — accumulate in tranches.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>YES Bank</strong></td>
+        <td><span class="badge badge-green">Mid</span></td>
+        <td class="watch">WATCH</td>
+        <td>Near 52-week high; RSI 64 — positive momentum but structural concerns remain; trade, don't invest.</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>ONGC</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="watch">WATCH</td>
+        <td>Crude >$85 is an earnings tailwind; monitor subsidy-sharing mechanism before committing.</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>ITC</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="avoid">AVOID</td>
+        <td>GST 2.0 tax hike structurally negative; cigarette volume pressure FY27; wait for clarity on volume elasticity.</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>IndiGo (INDIGO)</strong></td>
+        <td><span class="badge badge-blue">Large</span></td>
+        <td class="avoid">AVOID</td>
+        <td>Crude spike directly hits aviation margins; monitor Brent carefully before re-entry.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION 11: KEY EVENTS CALENDAR -->
+  <div class="section">
+    <div class="section-title">📅 11. Events to Watch This Week</div>
+    <table>
+      <tr><th>Date</th><th>Event</th><th>Impact</th></tr>
+      <tr>
+        <td><strong>Jun 4 (Today)</strong></td>
+        <td>Pre-market: Global cues (Iran/oil), FII activity data</td>
+        <td><span class="badge badge-red">High — Bearish bias</span></td>
+      </tr>
+      <tr>
+        <td><strong>Jun 5 (Fri)</strong></td>
+        <td>RBI MPC Policy Decision — 10 AM IST. Governor press conference 12 PM</td>
+        <td><span class="badge badge-orange">Very High — Market-moving</span></td>
+      </tr>
+      <tr>
+        <td><strong>Jun 5 (Fri)</strong></td>
+        <td>US Non-Farm Payrolls (Jun 2026) — overnight cue for Monday</td>
+        <td><span class="badge badge-orange">High — Global risk appetite</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ongoing</strong></td>
+        <td>NHPC OFS retail window closes; Q4 FY26 results straggler announcements</td>
+        <td><span class="badge badge-blue">Medium</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FOOTER / DISCLAIMER -->
+  <div class="footer">
+    <strong>DISCLAIMER</strong><br>
+    This is AI-generated equity research for informational purposes only. Data sourced from publicly available web sources as of June 4, 2026 (07:46 IST). Numbers may be approximate; always verify with live data before making investment decisions.<br>
+    <strong>This report is NOT SEBI-registered investment advice.</strong> The author/generator is not a SEBI-registered research analyst. Investments in securities markets are subject to market risks. Past performance is not indicative of future returns. Please consult a SEBI-registered financial advisor before investing.<br><br>
+    Sources:
+    <a href="https://trendlyne.com/markets-today/" style="color:#4c6ef5;">Trendlyne</a> |
+    <a href="https://www.screener.in/screens/66846/high-roe-low-debt/" style="color:#4c6ef5;">Screener.in</a> |
+    <a href="https://www.cnbc.com/2026/06/03/stock-market-today-live-updates.html" style="color:#4c6ef5;">CNBC Markets</a> |
+    <a href="https://www.business-standard.com/markets/news/nhpc-shares-rise-5-percent-as-govt-exercises-greenshoe-in-ofs-retail-window-opens-126060300264_1.html" style="color:#4c6ef5;">Business Standard</a> |
+    <a href="https://pulse.zerodha.com/" style="color:#4c6ef5;">Zerodha Pulse</a> |
+    <a href="https://trendlyne.com/macro-data/fii-dii/latest/cash-pastmonth/" style="color:#4c6ef5;">FII/DII Data</a> |
+    <a href="https://www.goodreturns.in/news/stock-market-outlook-june-3-2026-will-sensex-nifty-today-extend-recovery-rbi-meet-it-stocks-in-focus-1512643.html" style="color:#4c6ef5;">Goodreturns</a>
+  </div>
+
+</div>
+</body>
+</html>

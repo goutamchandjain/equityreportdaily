@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇳 India Equity Scan — June 3, 2026 | Nifty ~23,441</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; }
+  .email-wrapper { max-width: 900px; margin: 0 auto; background: #fff; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #0f3460 0%, #16213e 100%); color: white; padding: 28px 32px; }
+  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .header .subtitle { font-size: 13px; color: #a8c7fa; }
+  .header .date-badge { display: inline-block; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 4px 14px; font-size: 12px; margin-top: 10px; }
+
+  /* Section */
+  .section { padding: 24px 32px; border-bottom: 1px solid #e8ecf0; }
+  .section:last-child { border-bottom: none; }
+  .section-title { font-size: 15px; font-weight: 700; color: #0f3460; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-title span { font-size: 18px; }
+
+  /* Index Cards */
+  .index-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
+  .index-card { border-radius: 10px; padding: 16px; border: 1px solid #e2e8f0; }
+  .index-card .name { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .index-card .value { font-size: 22px; font-weight: 700; margin: 4px 0; }
+  .index-card .change { font-size: 13px; font-weight: 600; }
+  .index-card .meta { font-size: 11px; color: #64748b; margin-top: 4px; }
+  .up { color: #16a34a; } .down { color: #dc2626; } .neutral { color: #64748b; }
+  .card-up { background: #f0fdf4; border-color: #86efac; }
+  .card-down { background: #fef2f2; border-color: #fca5a5; }
+  .card-neutral { background: #f8fafc; }
+
+  /* Global cues */
+  .global-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gcue-item { background: #f8fafc; border-radius: 8px; padding: 12px; border: 1px solid #e2e8f0; font-size: 12px; }
+  .gcue-item .gcue-name { font-weight: 600; color: #475569; margin-bottom: 4px; }
+  .gcue-item .gcue-val { font-size: 14px; font-weight: 700; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #0f3460; color: white; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; }
+  td { padding: 9px 12px; border-bottom: 1px solid #f1f5f9; }
+  tr:nth-child(even) { background: #f8fafc; }
+  tr:hover { background: #f0f7ff; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+  .tag-buy { background: #dcfce7; color: #166534; }
+  .tag-watch { background: #fef9c3; color: #854d0e; }
+  .tag-avoid { background: #fee2e2; color: #991b1b; }
+  .tag-largecap { background: #dbeafe; color: #1e40af; }
+  .tag-midcap { background: #ede9fe; color: #5b21b6; }
+  .tag-smallcap { background: #fce7f3; color: #831843; }
+
+  /* Alert boxes */
+  .alert { border-left: 4px solid; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0; font-size: 13px; }
+  .alert-info { border-color: #3b82f6; background: #eff6ff; }
+  .alert-warning { border-color: #f59e0b; background: #fffbeb; }
+  .alert-green { border-color: #22c55e; background: #f0fdf4; }
+  .alert-red { border-color: #ef4444; background: #fef2f2; }
+  .alert strong { display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* News items */
+  .news-item { padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
+  .news-item:last-child { border-bottom: none; }
+  .news-item .news-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 10px; margin-right: 8px; }
+  .news-item .news-title { font-size: 13px; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+  .news-item .news-body { font-size: 12px; color: #64748b; line-height: 1.5; }
+  .news-item .source { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+
+  /* Sector spotlight */
+  .sector-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .sector-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .sector-box p { font-size: 13px; opacity: 0.9; line-height: 1.6; }
+
+  /* Levels box */
+  .levels-box { background: #1e293b; color: white; border-radius: 10px; padding: 16px; font-size: 13px; }
+  .levels-box .lvl-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .levels-box .lvl-row:last-child { border-bottom: none; }
+  .lvl-support { color: #4ade80; font-weight: 600; }
+  .lvl-resist { color: #f87171; font-weight: 600; }
+
+  /* Decision table */
+  .decision-table th { font-size: 11px; }
+  .decision-table td { font-size: 12px; }
+
+  /* FII/DII */
+  .fiidii-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fiidii-card { border-radius: 10px; padding: 14px; text-align: center; }
+  .fiidii-card .institution { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .fiidii-card .amount { font-size: 20px; font-weight: 700; }
+  .fiidii-card .label { font-size: 11px; margin-top: 4px; opacity: 0.8; }
+  .fii-sell { background: #fef2f2; color: #dc2626; }
+  .dii-buy { background: #f0fdf4; color: #16a34a; }
+
+  /* Footer */
+  .footer { background: #1e293b; color: #94a3b8; padding: 20px 32px; font-size: 11px; line-height: 1.7; }
+  .footer strong { color: #e2e8f0; }
+  .sources { background: #f8fafc; padding: 16px 32px; font-size: 11px; color: #64748b; }
+  .sources a { color: #3b82f6; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .index-grid { grid-template-columns: 1fr 1fr; }
+    .global-grid { grid-template-columns: 1fr 1fr; }
+    .fiidii-grid { grid-template-columns: 1fr 1fr; }
+    .section { padding: 16px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="email-wrapper">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="subtitle">INDIA EQUITY INTELLIGENCE REPORT — AUTOMATED PRE-MARKET SCAN</div>
+  <h1>🇮🇳 India Equity Scan — June 3, 2026 | Nifty ~23,441</h1>
+  <div class="date-badge">📅 Wednesday, June 3, 2026 &nbsp;|&nbsp; 🕐 Generated at 08:08 IST &nbsp;|&nbsp; Pre-Market Edition</div>
+</div>
+
+<!-- 1. MARKET OVERVIEW -->
+<div class="section">
+  <div class="section-title"><span>📊</span> Market Overview — Yesterday's Close (June 2, 2026)</div>
+
+  <div class="index-grid">
+    <div class="index-card card-up">
+      <div class="name">Nifty 50</div>
+      <div class="value up">23,441</div>
+      <div class="change up">▲ +382 pts (+1.66%)</div>
+      <div class="meta">52W High: 26,373 &nbsp;|&nbsp; 52W Low: 22,183</div>
+      <div class="meta">IT-led rebound; snapped 4-day losing streak</div>
+    </div>
+    <div class="index-card card-up">
+      <div class="name">BSE Sensex</div>
+      <div class="value up">~76,920</div>
+      <div class="change up">▲ +382 pts (approx)</div>
+      <div class="meta">Broad-based buying across IT, FMCG</div>
+      <div class="meta">Support: 75,500 &nbsp;|&nbsp; Resistance: 78,000</div>
+    </div>
+    <div class="index-card card-neutral">
+      <div class="name">Nifty Midcap 150</div>
+      <div class="value neutral">~11,800 est.</div>
+      <div class="change neutral">→ Mixed performance</div>
+      <div class="meta">YTD 2026: +23.1% (strong outperformance)</div>
+      <div class="meta">Broad market participation uneven</div>
+    </div>
+    <div class="index-card card-neutral">
+      <div class="name">Nifty Smallcap 250</div>
+      <div class="value neutral">~9,100 est.</div>
+      <div class="change neutral">→ Lagging large caps</div>
+      <div class="meta">YTD 2026: +14.7% (below mid/large)</div>
+      <div class="meta">Selective buying; caution warranted</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+    <div class="levels-box">
+      <div style="font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px;">Nifty 50 Key Levels</div>
+      <div class="lvl-row"><span>Immediate Support</span><span class="lvl-support">23,300 – 23,200</span></div>
+      <div class="lvl-row"><span>Strong Support</span><span class="lvl-support">23,063</span></div>
+      <div class="lvl-row"><span>Immediate Resistance</span><span class="lvl-resist">23,574</span></div>
+      <div class="lvl-row"><span>Key Breakout Level</span><span class="lvl-resist">23,695 – 23,700</span></div>
+      <div class="lvl-row"><span>Extended Target</span><span class="lvl-resist">23,900+</span></div>
+    </div>
+    <div class="levels-box">
+      <div style="font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px;">Bank Nifty Key Levels</div>
+      <div class="lvl-row"><span>Immediate Support</span><span class="lvl-support">53,900 – 53,555</span></div>
+      <div class="lvl-row"><span>Weekly High</span><span class="lvl-resist">55,536</span></div>
+      <div class="lvl-row"><span>Resistance Zone 1</span><span class="lvl-resist">55,000</span></div>
+      <div class="lvl-row"><span>Resistance Zone 2</span><span class="lvl-resist">55,300</span></div>
+      <div class="lvl-row"><span>Note</span><span style="color:#fbbf24; font-size:11px;">Below 20W &amp; 50W EMA</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL CUES -->
+<div class="section" style="background: #f8fafc;">
+  <div class="section-title"><span>🌍</span> Overnight Global Cues</div>
+  <div class="global-grid">
+    <div class="gcue-item">
+      <div class="gcue-name">🇺🇸 S&P 500</div>
+      <div class="gcue-val up">7,609.78</div>
+      <div style="font-size:11px;" class="up">▲ +0.13% | New ALL-TIME HIGH</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🇺🇸 Dow Jones</div>
+      <div class="gcue-val up">51,307.79</div>
+      <div style="font-size:11px;" class="up">▲ +229 pts (+0.45%)</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🇺🇸 Nasdaq</div>
+      <div class="gcue-val up">27,093</div>
+      <div style="font-size:11px;" class="up">▲ +0.03% | New Record</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🇯🇵 Nikkei 225</div>
+      <div class="gcue-val down">66,734</div>
+      <div style="font-size:11px;" class="down">▼ -0.30%</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🇭🇰 Hang Seng</div>
+      <div class="gcue-val up">~+2.41%</div>
+      <div style="font-size:11px;" class="up">▲ Strong close</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🎁 GIFT Nifty (Jun 3 AM)</div>
+      <div class="gcue-val down">23,298</div>
+      <div style="font-size:11px;" class="down">▼ -0.61% | Weak open likely</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🛢️ Crude Oil (Brent)</div>
+      <div class="gcue-val neutral">$91–93/bbl</div>
+      <div style="font-size:11px;" class="down">Elevated | Inflation pressure</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">💰 FII Activity (Jun 2)</div>
+      <div class="gcue-val down">-₹8,363 Cr</div>
+      <div style="font-size:11px;" class="down">Net Sellers</div>
+    </div>
+    <div class="gcue-item">
+      <div class="gcue-name">🏦 DII Activity (Jun 2)</div>
+      <div class="gcue-val up">+₹9,589 Cr</div>
+      <div style="font-size:11px;" class="up">Net Buyers — Strong support</div>
+    </div>
+  </div>
+  <div class="alert alert-warning" style="margin-top: 14px;">
+    <strong>⚠️ Opening Outlook</strong>
+    GIFT Nifty at 23,298 (vs. Nifty close of ~23,441) suggests a <strong>gap-down open of ~140 pts</strong>. Despite record US markets, geopolitical/oil concerns and pre-RBI caution are weighing. Watch 23,300 as critical support.
+  </div>
+</div>
+
+<!-- FII/DII -->
+<div class="section">
+  <div class="section-title"><span>💹</span> FII / DII Activity — June 2, 2026</div>
+  <div class="fiidii-grid">
+    <div class="fiidii-card fii-sell">
+      <div class="institution">FII / FPI</div>
+      <div class="amount">-₹8,362.92 Cr</div>
+      <div class="label">Net Sellers — continued equity outflows</div>
+    </div>
+    <div class="fiidii-card dii-buy">
+      <div class="institution">DII</div>
+      <div class="amount">+₹9,589.32 Cr</div>
+      <div class="label">Net Buyers — domestic institutions providing floor</div>
+    </div>
+  </div>
+  <p style="font-size: 12px; color: #64748b; margin-top: 12px; line-height: 1.6;">DII buying has consistently absorbed FII selling pressure, preventing deeper corrections. This pattern suggests domestic conviction in Indian equities even as foreign flows remain volatile amid global macro uncertainty and elevated crude oil prices.</p>
+</div>
+
+<!-- 2. TOP MOVERS -->
+<div class="section">
+  <div class="section-title"><span>🏆</span> Top Movers — June 2, 2026</div>
+
+  <p style="font-size: 12px; font-weight: 700; color: #0f3460; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">📈 Large Cap Gainers (Nifty 50)</p>
+  <table style="margin-bottom: 16px;">
+    <thead><tr><th>Stock (NSE)</th><th>Change</th><th>CMP (₹)</th><th>Catalyst</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Infosys (INFY)</strong></td><td class="up">▲ +3.73%</td><td>₹1,247.55</td><td>IT sector rally; AI-led demand optimism; Q4 beat</td></tr>
+      <tr><td><strong>TCS</strong></td><td class="up">▲ +3.00%</td><td>₹2,366.80</td><td>Partnered with Mistral AI for agentic enterprise workflows</td></tr>
+      <tr><td><strong>Wipro (WIPRO)</strong></td><td class="up">▲ ~+2.5%</td><td>~₹235</td><td>₹15,000 Cr buyback announced; record date June 5</td></tr>
+      <tr><td><strong>HCL Technologies</strong></td><td class="up">▲ +1.71%</td><td>₹1,215.45</td><td>IT tailwinds; strong Q4 deal pipeline</td></tr>
+      <tr><td><strong>Persistent Systems</strong></td><td class="up">▲ +3.90%</td><td>N/A</td><td>52-week high breakout; GCC expansion momentum</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 12px; font-weight: 700; color: #0f3460; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">📉 Large Cap Losers (Nifty 50)</p>
+  <table style="margin-bottom: 16px;">
+    <thead><tr><th>Stock (NSE)</th><th>Change</th><th>Sector</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td><strong>NHPC</strong></td><td class="down">▼ -4.59%</td><td>Power/PSU</td><td>Profit-booking in PSU power stocks; sector rotation</td></tr>
+      <tr><td><strong>Wockhardt</strong></td><td class="down">▼ Weak</td><td>Pharma</td><td>MACD/DMI overbought after extended rally; caution</td></tr>
+      <tr><td><strong>Supriya Lifescience</strong></td><td class="down">▼ Notable</td><td>Pharma</td><td>Technical distribution; profit-taking after run-up</td></tr>
+      <tr><td><strong>Auto Sector Names</strong></td><td class="down">▼ Mixed</td><td>Auto</td><td>May vehicle sales down 15.35% YoY — demand concern</td></tr>
+      <tr><td><strong>ESSEN / AVG-RE</strong></td><td class="down">▼ -39.74%</td><td>Real Estate</td><td>SME/small-cap — high volatility; thin liquidity</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 12px; font-weight: 700; color: #0f3460; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">🔼 Mid/Small Cap Notable Movers</p>
+  <table>
+    <thead><tr><th>Stock</th><th>Change</th><th>Cap</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Thacker</strong></td><td class="up">▲ +20.00%</td><td><span class="tag tag-smallcap">SmallCap</span></td><td>Operator-driven; thin volumes; use caution</td></tr>
+      <tr><td><strong>JSLL</strong></td><td class="up">▲ +19.99%</td><td><span class="tag tag-smallcap">SmallCap</span></td><td>Upper circuit; check for corporate events</td></tr>
+      <tr><td><strong>Newgen Software</strong></td><td class="up">▲ Double-digit</td><td><span class="tag tag-midcap">MidCap</span></td><td>IT tailwinds; BPM/workflow automation demand</td></tr>
+      <tr><td><strong>Emkay Global</strong></td><td class="up">▲ Strong</td><td><span class="tag tag-midcap">MidCap</span></td><td>Financial services; broader market optimism</td></tr>
+      <tr><td><strong>Universal Cables</strong></td><td class="up">▲ Strong</td><td><span class="tag tag-smallcap">SmallCap</span></td><td>Infrastructure/capex play; order book visibility</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 3. FUNDAMENTAL PICKS -->
+<div class="section" style="background: #f8fafc;">
+  <div class="section-title"><span>🔍</span> Fundamental Picks — Screened for Quality</div>
+  <p style="font-size: 12px; color: #64748b; margin-bottom: 14px;">Criteria: PEG &lt; 1.5 | ROE &gt; 15% | Debt/Equity &lt; 0.5 | Revenue &amp; PAT Growth &gt; 15% YoY</p>
+  <table>
+    <thead>
+      <tr><th>Stock</th><th>Cap</th><th>Sector</th><th>P/E</th><th>ROE</th><th>D/E</th><th>Rev Growth</th><th>Rationale</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Infosys (INFY)</strong></td>
+        <td><span class="tag tag-largecap">LargeCap</span></td>
+        <td>IT Services</td>
+        <td>~22x</td>
+        <td>&gt;30%</td>
+        <td>Minimal</td>
+        <td>~15–18% YoY</td>
+        <td>AI deal pipeline building; dividend yield attractive; analyst target ₹1,500</td>
+      </tr>
+      <tr>
+        <td><strong>Persistent Systems</strong></td>
+        <td><span class="tag tag-midcap">MidCap</span></td>
+        <td>IT Services</td>
+        <td>~35x</td>
+        <td>&gt;20%</td>
+        <td>Nil</td>
+        <td>~25% YoY</td>
+        <td>Fastest-growing IT mid-cap; GCC &amp; digital engineering demand; 52W breakout</td>
+      </tr>
+      <tr>
+        <td><strong>ICICI Bank</strong></td>
+        <td><span class="tag tag-largecap">LargeCap</span></td>
+        <td>Banking</td>
+        <td>~16x</td>
+        <td>~18%</td>
+        <td>N/A</td>
+        <td>~18% NII growth</td>
+        <td>Best-in-class asset quality; retail loan growth; low NPA; Buy consensus</td>
+      </tr>
+      <tr>
+        <td><strong>Apollo Hospitals</strong></td>
+        <td><span class="tag tag-largecap">LargeCap</span></td>
+        <td>Healthcare</td>
+        <td>~55x</td>
+        <td>~17%</td>
+        <td>0.4x</td>
+        <td>~20% YoY</td>
+        <td>Hospital expansion capex paying off; digital health monetization; premiumisation</td>
+      </tr>
+      <tr>
+        <td><strong>Mahindra &amp; Mahindra</strong></td>
+        <td><span class="tag tag-largecap">LargeCap</span></td>
+        <td>Auto/EV</td>
+        <td>~18x</td>
+        <td>&gt;20%</td>
+        <td>0.2x</td>
+        <td>~22% YoY</td>
+        <td>SUV market dominance; EV ramp-up (BE 6e, XEV 9e); strong FY27 guidance</td>
+      </tr>
+      <tr>
+        <td><strong>Universal Cables</strong></td>
+        <td><span class="tag tag-smallcap">SmallCap</span></td>
+        <td>Capital Goods</td>
+        <td>~15x</td>
+        <td>~22%</td>
+        <td>0.3x</td>
+        <td>&gt;25% YoY</td>
+        <td>Infra/power capex beneficiary; strong order inflows; proxy for India capex cycle</td>
+      </tr>
+      <tr>
+        <td><strong>Trent Ltd</strong></td>
+        <td><span class="tag tag-largecap">LargeCap</span></td>
+        <td>Retail / FMCG</td>
+        <td>~65x</td>
+        <td>&gt;25%</td>
+        <td>Minimal</td>
+        <td>~35% store expansion</td>
+        <td>Zudio disruption in value fashion; premiumization through Westside; Tata group backing</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert alert-info" style="margin-top: 12px;">
+    <strong>📌 Note on Nifty 50 Earnings</strong>
+    Q4FY26 Nifty 50 PAT growth was +4% YoY — the 8th consecutive quarter of single-digit growth. Market is pricing in FY27 recovery. Any positive guidance from IT majors or banks in concalls will be a key re-rating trigger.
+  </div>
+</div>
+
+<!-- 4. TECHNICAL SIGNALS -->
+<div class="section">
+  <div class="section-title"><span>📈</span> Technical Signals — Setups to Watch</div>
+  <table>
+    <thead><tr><th>Stock</th><th>Signal</th><th>Details</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Persistent Systems</strong></td>
+        <td><span class="tag tag-buy" style="font-size:11px;">52W Breakout</span></td>
+        <td>Breaking out to 52-week highs on strong volume; GCC expansion catalyst; above all major MAs</td>
+        <td class="up"><strong>Bullish</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Nifty IT Index</strong></td>
+        <td><span class="tag tag-buy" style="font-size:11px;">Volume Spike</span></td>
+        <td>Nifty IT surged 4%+ on June 2; institutional accumulation visible; AI demand narrative intact</td>
+        <td class="up"><strong>Bullish</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Bank Nifty</strong></td>
+        <td><span class="tag tag-watch" style="font-size:11px;">Consolidation</span></td>
+        <td>Opened gap-up at 54,610; below 20W and 50W EMA; support 53,900–53,555; needs breakout above 55,300</td>
+        <td class="neutral"><strong>Wait &amp; Watch</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Wockhardt (Pharma)</strong></td>
+        <td><span class="tag tag-avoid" style="font-size:11px;">RSI Overbought</span></td>
+        <td>MACD and DMI in overbought zone; far above 20 DMA &amp; 50 DMA; extended price structure</td>
+        <td class="down"><strong>Avoid Fresh Longs</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Newgen Software</strong></td>
+        <td><span class="tag tag-buy" style="font-size:11px;">Momentum</span></td>
+        <td>Double-digit gain on strong volumes; IT sector tailwind; BPM/AI workflow demand</td>
+        <td class="up"><strong>Monitor for entry</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Nifty 50 (Index)</strong></td>
+        <td><span class="tag tag-watch" style="font-size:11px;">Key Level</span></td>
+        <td>Support at 23,300–23,200; break above 23,700 triggers short-covering to 23,900. GIFT Nifty signals gap-down open</td>
+        <td class="neutral"><strong>Cautious; wait for levels</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 5. NEWS & SENTIMENT -->
+<div class="section" style="background: #f8fafc;">
+  <div class="section-title"><span>📰</span> News &amp; Sentiment — Top Stories</div>
+
+  <div class="news-item">
+    <div><span class="news-tag" style="background:#dbeafe; color:#1d4ed8;">RBI POLICY</span><span class="news-title">RBI MPC Meeting Begins Today (June 3–5) — Rate Decision Friday 10 AM IST</span></div>
+    <div class="news-body">The Reserve Bank of India's Monetary Policy Committee, chaired by Governor Sanjay Malhotra, begins its 3-day deliberation today. Markets widely expect the repo rate to remain unchanged at <strong>5.25%</strong> for the third consecutive meeting. Elevated inflation (near 5%) driven by crude oil ($91–93/bbl) and currency weakness makes a cut unlikely. However, the tone of the statement and commentary on growth/liquidity will be closely parsed. A dovish tilt could boost rate-sensitive sectors (realty, banking, NBFCs).</div>
+    <div class="source">Source: Republic World, Upstox, BusinessToday</div>
+  </div>
+
+  <div class="news-item">
+    <div><span class="news-tag" style="background:#dcfce7; color:#166534;">IT SECTOR</span><span class="news-title">TCS Partners Mistral AI — Indian IT Stocks Surge 3–4%</span></div>
+    <div class="news-body">TCS announced a strategic partnership with Mistral AI to deploy agentic AI workflows across enterprise functions. This triggered institutional buying across Indian IT — Infosys +3.73%, TCS +3%, Persistent +3.9%, Mastek +3.6%. US tech giants' strong quarterly results also supported sentiment. The Nifty IT index surged over 4%, reversing a 4-day losing streak for the broader market.</div>
+    <div class="source">Source: BusinessToday, Business Upturn, Zerodha Pulse</div>
+  </div>
+
+  <div class="news-item">
+    <div><span class="news-tag" style="background:#ede9fe; color:#5b21b6;">CORPORATE</span><span class="news-title">Wipro Announces ₹15,000 Crore Buyback at ₹250/Share</span></div>
+    <div class="news-body">Wipro has announced a significant share buyback of ₹15,000 crore, buying back 60 crore shares at ₹250 each. Record date is June 5, 2026. The buyback signals management confidence in cash generation. At ₹250, the buyback offers a premium to recent market price, likely creating support. Separately, Wipro is acquiring an additional 20% stake in US insurtech Aggne Global for $28.5 million (total stake: 80%).</div>
+    <div class="source">Source: BusinessToday, Zerodha Pulse</div>
+  </div>
+
+  <div class="news-item">
+    <div><span class="news-tag" style="background:#fce7f3; color:#831843;">SEBI</span><span class="news-title">SEBI's New 50:50 F&O Margin Rule Now Fully Effective</span></div>
+    <div class="news-body">SEBI's stricter margin requirements for F&O traders are now fully implemented — at least 50% of margin requirement must be in cash or cash-equivalents. This reduces leverage available to retail traders and may suppress options volumes near-term. Brokers and exchanges may see lower volumes initially. Watch for impact on derivatives-heavy mid-cap names.</div>
+    <div class="source">Source: BusinessToday, Angel One</div>
+  </div>
+
+  <div class="news-item">
+    <div><span class="news-tag" style="background:#fef9c3; color:#854d0e;">CONSUMER</span><span class="news-title">Coca-Cola Exploring India IPO for Hindustan Coca-Cola Holdings (HCCH)</span></div>
+    <div class="news-body">Coca-Cola is evaluating a public market listing in India for HCCH, the parent of its largest bottler, potentially targeting a 2027 IPO. This would be a significant event for India's FMCG/beverage segment. Existing listed peers like Varun Beverages and Devyani International may see re-rating or comparison-based trading.</div>
+    <div class="source">Source: Zerodha Pulse</div>
+  </div>
+</div>
+
+<!-- 6. ANNUAL REPORT HOTSPOTS -->
+<div class="section">
+  <div class="section-title"><span>📋</span> Annual Report Hotspots &amp; Concall Watch</div>
+
+  <div class="alert alert-green">
+    <strong>✅ IT Sector — Q4FY26 Concalls: Key Takeaways</strong>
+    Post Q4 results, multiple IT companies (TCS, Infosys, Wipro, HCL Tech, Mphasis, LTTS, Cyient) have completed concalls. Key themes: (1) AI-driven deal flow accelerating — deal TCV improving QoQ; (2) Discretionary spending recovery in BFSI and retail verticals; (3) Margin guidance for FY27 stable to slightly expanding. Analyst targets upgraded across the board.
+  </div>
+
+  <div class="alert alert-warning">
+    <strong>⚠️ Auto Sector — Demand Red Flag</strong>
+    Total vehicle sales dropped 15.35% YoY in May 2026 (2,614 units vs. 3,088 in May 2025). Watch Q1FY27 management guidance from Maruti, Tata Motors, M&amp;M, Hero MotoCorp for demand recovery signals. M&amp;M remains insulated via SUV/EV focus; 2-wheelers may face rural demand pressure.
+  </div>
+
+  <div class="alert alert-info">
+    <strong>📌 Pharma — Watch List from Annual Reports</strong>
+    Glenmark, Aurobindo, and Wockhardt are key pharma names flagged in technical reports. For annual report alerts: watch for US FDA inspection outcomes, ANDA approvals, and specialty pipeline progress. Wockhardt specifically flagged for extended rally — check for promoter pledge levels before entry.
+  </div>
+
+  <table style="margin-top: 14px;">
+    <thead><tr><th>Company</th><th>Event Type</th><th>Key Signal</th><th>Flag</th></tr></thead>
+    <tbody>
+      <tr><td>Wipro</td><td>Buyback + M&A</td><td>₹15,000 Cr buyback; Aggne Global acquisition</td><td class="up">Positive</td></tr>
+      <tr><td>TCS</td><td>Partnership</td><td>Mistral AI agentic workflow deal; deal TCV recovery</td><td class="up">Positive</td></tr>
+      <tr><td>Infosys</td><td>Q4 Results</td><td>Beat on margins; raised FY27 revenue guidance; dividend declared</td><td class="up">Positive</td></tr>
+      <tr><td>NHPC</td><td>Price Action</td><td>-4.59% — sector rotation out of PSU power plays</td><td class="down">Caution</td></tr>
+      <tr><td>Auto Sector</td><td>Sales Data</td><td>May 2026 sales -15.35% YoY — structural or seasonal?</td><td class="down">Monitor</td></tr>
+      <tr><td>Wockhardt</td><td>Technical</td><td>Overbought; check promoter pledge and US FDA status</td><td class="down">Red Flag</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 7. SECTOR SPOTLIGHT -->
+<div class="section" style="background: #f8fafc;">
+  <div class="section-title"><span>🔦</span> Sector Spotlight — Information Technology</div>
+
+  <div class="sector-box">
+    <h3>🖥️ IT Sector — Today's Focus</h3>
+    <p>The Indian IT sector is the clear outperformer as of June 2026. Three catalysts are converging: (1) <strong>AI demand acceleration</strong> — Indian IT companies are winning large deals in agentic AI deployment for global enterprises; (2) <strong>US tech exuberance</strong> — S&amp;P 500 and Nasdaq at all-time highs signals continued IT budgets; (3) <strong>Currency tailwinds</strong> — a weaker rupee boosts rupee-denominated revenues for export-oriented IT firms. The RBI MPC (June 3–5) is unlikely to disrupt IT directly, but a hawkish tone could strengthen INR briefly — watch for currency impact.</p>
+  </div>
+
+  <p style="font-size: 12px; font-weight: 700; color: #0f3460; margin-bottom: 12px; text-transform: uppercase;">3 Stocks to Watch in IT Today:</p>
+  <table>
+    <thead><tr><th>Stock</th><th>NSE Symbol</th><th>Why Now?</th><th>Key Level</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Infosys</strong></td>
+        <td>INFY</td>
+        <td>Largest gainer in Nifty 50; analyst target ₹1,500; AI deal wins; strong Q4 beat</td>
+        <td>Support ₹1,200</td>
+        <td class="up">₹1,500</td>
+      </tr>
+      <tr>
+        <td><strong>Persistent Systems</strong></td>
+        <td>PERSISTENT</td>
+        <td>52-week high breakout; GCC expansion; fastest-growing mid-cap IT; volume confirmation</td>
+        <td>Breakout held</td>
+        <td class="up">+15–20% potential</td>
+      </tr>
+      <tr>
+        <td><strong>Newgen Software</strong></td>
+        <td>NEWGEN</td>
+        <td>BPM/workflow automation — AI adjacent; double-digit rally on Jun 2; watch for entry on dips</td>
+        <td>Watch ₹1,100</td>
+        <td class="up">+20–25% potential</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert alert-info" style="margin-top: 12px;">
+    <strong>Also Watch: Capital Goods / Infrastructure</strong>
+    Universal Cables surged strongly on infra capex tailwinds. India's power &amp; infra buildout (₹11 lakh crore CAPEX budget) remains a multi-year theme. L&amp;T, Thermax, Bharat Forge also worth monitoring alongside cable/wire manufacturers.
+  </div>
+</div>
+
+<!-- 8. DECISION FRAMEWORK -->
+<div class="section">
+  <div class="section-title"><span>✅</span> Decision Framework — Buy / Watch / Avoid</div>
+  <table class="decision-table">
+    <thead>
+      <tr><th>Stock</th><th>NSE Symbol</th><th>Verdict</th><th>One-Line Reasoning</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Infosys</strong></td>
+        <td>INFY</td>
+        <td><span class="tag tag-buy">BUY</span></td>
+        <td>AI deal acceleration, earnings beat, analyst target ₹1,500, strong institutional backing</td>
+      </tr>
+      <tr>
+        <td><strong>TCS</strong></td>
+        <td>TCS</td>
+        <td><span class="tag tag-buy">BUY</span></td>
+        <td>Mistral AI partnership, IT sector leader, target ₹3,550, consistent cash cow</td>
+      </tr>
+      <tr>
+        <td><strong>Wipro</strong></td>
+        <td>WIPRO</td>
+        <td><span class="tag tag-buy">BUY</span></td>
+        <td>₹15,000 Cr buyback at ₹250 creates floor; record date June 5 — near-term catalyst</td>
+      </tr>
+      <tr>
+        <td><strong>Persistent Systems</strong></td>
+        <td>PERSISTENT</td>
+        <td><span class="tag tag-buy">BUY</span></td>
+        <td>52-week breakout with volume; fastest-growing mid-cap IT; GCC theme intact</td>
+      </tr>
+      <tr>
+        <td><strong>ICICI Bank</strong></td>
+        <td>ICICIBANK</td>
+        <td><span class="tag tag-watch">WATCH</span></td>
+        <td>Fundamentally strong but Bank Nifty below key EMAs; await RBI clarity June 5</td>
+      </tr>
+      <tr>
+        <td><strong>Mahindra &amp; Mahindra</strong></td>
+        <td>M&amp;M</td>
+        <td><span class="tag tag-watch">WATCH</span></td>
+        <td>EV ramp positive, but May sales data weak; watch Q1FY27 guidance on July results</td>
+      </tr>
+      <tr>
+        <td><strong>Apollo Hospitals</strong></td>
+        <td>APOLLOHOSP</td>
+        <td><span class="tag tag-watch">WATCH</span></td>
+        <td>Strong fundamentals, but high P/E (55x); accumulate on dips; long-term conviction buy</td>
+      </tr>
+      <tr>
+        <td><strong>Wockhardt</strong></td>
+        <td>WOCKPHARMA</td>
+        <td><span class="tag tag-avoid">AVOID</span></td>
+        <td>Overbought (RSI, MACD); extended rally far above MAs; no fresh entry; wait for correction</td>
+      </tr>
+      <tr>
+        <td><strong>NHPC</strong></td>
+        <td>NHPC</td>
+        <td><span class="tag tag-avoid">AVOID</span></td>
+        <td>PSU power sector rotation underway; -4.59% on June 2; await technical stabilization</td>
+      </tr>
+      <tr>
+        <td><strong>Auto Sector Broadly</strong></td>
+        <td>MARUTI / TATAMOTORS</td>
+        <td><span class="tag tag-watch">WATCH</span></td>
+        <td>May sales -15% YoY is a red flag; M&amp;M SUV/EV insulated; 2W space needs monitoring</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TODAY'S WATCHLIST SUMMARY -->
+<div class="section" style="background: #0f3460; color: white; padding: 24px 32px;">
+  <div style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; color: #a8c7fa;">📋 Today's Pre-Market Checklist</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; line-height: 1.8; color: #e2e8f0;">
+    <div>☐ &nbsp;Watch GIFT Nifty at open — gap down ~140 pts likely<br>
+    ☐ &nbsp;Nifty 23,300 is critical support — hold or breakdown?<br>
+    ☐ &nbsp;Wipro buyback opens — record date June 5 (tomorrow)<br>
+    ☐ &nbsp;RBI MPC Day 1 — any commentary leaks via media<br>
+    ☐ &nbsp;IT sector — can momentum sustain second day?</div>
+    <div>☐ &nbsp;Crude oil — any move toward $95 is negative for India<br>
+    ☐ &nbsp;FII data — will selling continue or pause?<br>
+    ☐ &nbsp;Persistent Systems — holding breakout above 52W high?<br>
+    ☐ &nbsp;Bank Nifty — any break above 55,000 positive<br>
+    ☐ &nbsp;SEBI F&O margin rule — watch options volumes</div>
+  </div>
+</div>
+
+<!-- SOURCES -->
+<div class="sources">
+  <strong>Data Sources:</strong><br>
+  • <a href="https://www.equitymaster.com/indian-share-markets/6/2/2026/Sensex-Today-Ends-382-Points-Higher--Nifty-Above-23450--Balaji-Amines-Up-15">Equitymaster — Jun 2 Market Close</a> &nbsp;|&nbsp;
+  <a href="https://www.nseindia.com/reports/fii-dii">NSE FII/DII Data</a> &nbsp;|&nbsp;
+  <a href="https://hdfcsky.com/news/nse-top-gainers-and-losers-on-june-2-2026-at-close-thacker-jsll-gtecjainx-lead-gains-avg-re-essen-re3-supriya-lifescience-decline">HDFC Sky — NSE Gainers/Losers</a><br>
+  • <a href="https://www.businesstoday.in/markets/stocks/story/tcs-infosys-hcl-tech-wipro-coforge-mphasis-techm-it-stocks-to-buy-fresh-targets-534401-2026-06-02">BusinessToday — IT Targets Jun 2</a> &nbsp;|&nbsp;
+  <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-02-2026">TheStreet — S&P 500 Jun 2</a> &nbsp;|&nbsp;
+  <a href="https://www.cnbc.com/2026/06/03/asia-markets-today-nikkei-kospi-hang-seng-sensex-iran-oil.html">CNBC Asia Markets Jun 3</a><br>
+  • <a href="https://www.republicworld.com/business/rbi-mpc-meeting-june-2026-date-time-repo-rate-expectations-2026-05-27-125848">Republic World — RBI MPC June 2026</a> &nbsp;|&nbsp;
+  <a href="https://www.angelone.in/news/market-updates/key-trends-for-june-2026-rbi-policy-monsoon-buzz-and-dividend-stocks-to-watch">Angel One — June 2026 Trends</a><br>
+  • <a href="https://lemonn.co.in/blog/market-updates/india-market-outlook-2-june-2026/">Lemonn — India Market Outlook Jun 2</a> &nbsp;|&nbsp;
+  <a href="https://pulse.zerodha.com/">Zerodha Pulse — Corporate News</a> &nbsp;|&nbsp;
+  <a href="https://www.businesstoday.in/markets/stocks/story/glenmark-auro-pharma-wockhardt-top-pharma-stocks-to-trade-key-levels-targets-more-534372-2026-06-02">BusinessToday — Pharma Stocks Jun 2</a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>⚠️ Disclaimer:</strong> This is an AI-generated research report for informational and educational purposes only. It does not constitute investment advice, a recommendation to buy or sell any securities, or a SEBI-registered research report. Past performance is not indicative of future results. Investors should conduct their own due diligence and consult a SEBI-registered investment advisor before making any investment decisions. Market data is sourced from publicly available information and may not be 100% accurate or real-time.<br><br>
+  <strong>Generated:</strong> June 3, 2026, 08:08 AM IST &nbsp;|&nbsp; <strong>For:</strong> Goutam (goutam.bang@gmail.com) &nbsp;|&nbsp; <strong>Powered by:</strong> Claude AI + Kite/Web Data Aggregation
+</div>
+
+</div>
+</body>
+</html>

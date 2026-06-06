@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇳 India Equity Scan — June 1, 2026 | Nifty ~23,548</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  }
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+    color: #fff;
+    padding: 28px 32px;
+    border-bottom: 4px solid #e94560;
+  }
+  .header .flag { font-size: 28px; }
+  .header h1 { font-size: 22px; font-weight: 700; margin: 6px 0 4px; }
+  .header .meta { color: #a8b2d8; font-size: 13px; }
+  .header .market-status {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  /* Section */
+  .section {
+    padding: 24px 32px;
+    border-bottom: 1px solid #eef0f4;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f3460;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e94560;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Index Cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .index-card {
+    background: #f8f9fb;
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid #e2e6ea;
+  }
+  .index-card .name { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+  .index-card .level { font-size: 20px; font-weight: 700; margin: 4px 0; }
+  .index-card .change { font-size: 13px; font-weight: 600; }
+  .red { color: #e94560; }
+  .green { color: #00c896; }
+  .orange { color: #ff8c42; }
+
+  /* Global Cues */
+  .global-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .global-item {
+    background: #f8f9fb;
+    border-radius: 8px;
+    padding: 12px;
+    border-left: 3px solid #ccc;
+  }
+  .global-item.up { border-left-color: #00c896; }
+  .global-item.down { border-left-color: #e94560; }
+  .global-item .gname { font-size: 11px; color: #888; }
+  .global-item .gval { font-size: 15px; font-weight: 700; }
+  .global-item .gchg { font-size: 12px; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  th {
+    background: #0f3460;
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8f9fb; }
+  .td-green { color: #00c896; font-weight: 600; }
+  .td-red { color: #e94560; font-weight: 600; }
+  .td-orange { color: #ff8c42; font-weight: 600; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-buy { background: #d4f5ea; color: #00855e; }
+  .tag-watch { background: #fff3cd; color: #8a6c00; }
+  .tag-avoid { background: #fde8ec; color: #c0002b; }
+  .tag-large { background: #e8eaf6; color: #3949ab; }
+  .tag-mid { background: #e8f5e9; color: #2e7d32; }
+  .tag-small { background: #fff8e1; color: #f57f17; }
+
+  /* News */
+  .news-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-item .news-headline { font-weight: 600; color: #1a1a2e; margin-bottom: 4px; }
+  .news-item .news-meta { font-size: 12px; color: #888; }
+  .news-item .news-impact {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .impact-bullish { background: #d4f5ea; color: #00855e; }
+  .impact-bearish { background: #fde8ec; color: #c0002b; }
+  .impact-neutral { background: #e8eaf6; color: #3949ab; }
+
+  /* Sector Spotlight */
+  .sector-box {
+    background: linear-gradient(135deg, #f8f9fb, #eef0f7);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid #0f3460;
+  }
+  .sector-box h3 { color: #0f3460; font-size: 15px; margin-bottom: 10px; }
+
+  /* Annual Report flags */
+  .flag-box {
+    background: #fff8f0;
+    border-left: 4px solid #ff8c42;
+    padding: 14px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+  }
+  .flag-box .flag-title { font-weight: 700; color: #cc6600; margin-bottom: 6px; }
+  .flag-box ul { padding-left: 18px; }
+  .flag-box li { margin-bottom: 4px; font-size: 13px; }
+
+  /* FII DII */
+  .fii-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .fii-card {
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .fii-card.sell { background: #fde8ec; border: 1px solid #f5b8c5; }
+  .fii-card.buy { background: #d4f5ea; border: 1px solid #9de8cc; }
+  .fii-card .fc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #666; }
+  .fii-card .fc-val { font-size: 22px; font-weight: 700; margin: 6px 0; }
+  .fii-card.sell .fc-val { color: #c0002b; }
+  .fii-card.buy .fc-val { color: #00855e; }
+  .fii-card .fc-sub { font-size: 12px; color: #555; }
+
+  /* Technical signals */
+  .signal-item {
+    background: #f8f9fb;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .signal-item .si-left .si-name { font-weight: 700; font-size: 13px; }
+  .signal-item .si-left .si-signal { font-size: 12px; color: #666; }
+  .signal-item .si-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .si-bullish { background: #d4f5ea; color: #00855e; }
+  .si-bearish { background: #fde8ec; color: #c0002b; }
+  .si-neutral { background: #e8eaf6; color: #3949ab; }
+
+  /* Footer / Disclaimer */
+  .disclaimer {
+    background: #f8f9fb;
+    padding: 20px 32px;
+    font-size: 12px;
+    color: #888;
+    border-top: 2px solid #e2e6ea;
+  }
+  .disclaimer strong { color: #555; }
+
+  /* Source citation */
+  .source-note {
+    font-size: 11px;
+    color: #aaa;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  .highlight-box {
+    background: #eef0f7;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 12px 0;
+    border-left: 3px solid #0f3460;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .index-grid { grid-template-columns: repeat(2,1fr); }
+    .global-grid { grid-template-columns: repeat(2,1fr); }
+    .fii-grid { grid-template-columns: 1fr; }
+    .section { padding: 16px; }
+    .header { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="flag">🇮🇳</div>
+    <h1>India Equity Daily Intelligence Report</h1>
+    <div class="meta">Monday, June 1, 2026 &nbsp;|&nbsp; Generated at 07:15 AM IST &nbsp;|&nbsp; Pre-Market Edition</div>
+    <div class="market-status">⚠️ BEARISH TONE — FII SELLING PERSISTS</div>
+  </div>
+
+  <!-- 1. MARKET OVERVIEW -->
+  <div class="section">
+    <div class="section-title">📊 1. Market Overview — Last Close (May 29, 2026)</div>
+
+    <div class="index-grid">
+      <div class="index-card">
+        <div class="name">Nifty 50</div>
+        <div class="level red">23,548</div>
+        <div class="change red">▼ 359.4 pts (-1.50%)</div>
+      </div>
+      <div class="index-card">
+        <div class="name">Sensex</div>
+        <div class="level red">74,776</div>
+        <div class="change red">▼ 1,092 pts (-1.44%)</div>
+      </div>
+      <div class="index-card">
+        <div class="name">Nifty Midcap 150</div>
+        <div class="level orange">~52,400*</div>
+        <div class="change red">▼ ~1.2% est.</div>
+      </div>
+      <div class="index-card">
+        <div class="name">Nifty Smallcap 250</div>
+        <div class="level orange">~16,800*</div>
+        <div class="change red">▼ ~1.5% est.</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Key Technical Levels — Nifty 50:</strong><br>
+      <strong>Support:</strong> 23,362 (immediate) → 23,184 (strong) → 22,700 (major)<br>
+      <strong>Resistance:</strong> 23,800 (immediate) → 24,000–24,100 (critical) → 24,400 (next target)<br>
+      <strong>RSI:</strong> ~51 — neutral zone; no extreme readings. Range-bound market expected until 24,000 is decisively reclaimed.
+    </div>
+    <div class="source-note">Sources: Business Standard, 5paisa Nifty Outlook, Yahoo Finance (^NSEI) | *Midcap/Smallcap estimated from market tone</div>
+  </div>
+
+  <!-- GLOBAL CUES -->
+  <div class="section">
+    <div class="section-title">🌍 Global Cues — Overnight</div>
+
+    <div class="global-grid">
+      <div class="global-item up">
+        <div class="gname">Nasdaq (May 28 close)</div>
+        <div class="gval green">26,973</div>
+        <div class="gchg green">Nasdaq +8% in May — strong</div>
+      </div>
+      <div class="global-item up">
+        <div class="gname">S&P 500 (May 28 close)</div>
+        <div class="gval green">7,580</div>
+        <div class="gchg green">Record high close</div>
+      </div>
+      <div class="global-item up">
+        <div class="gname">Dow Jones (May 28 close)</div>
+        <div class="gval green">51,032</div>
+        <div class="gchg green">Tech-led rally</div>
+      </div>
+      <div class="global-item up">
+        <div class="gname">Nikkei 225</div>
+        <div class="gval green">Mixed/Flat*</div>
+        <div class="gchg">June 1 AM — tracking US</div>
+      </div>
+      <div class="global-item down">
+        <div class="gname">Hang Seng</div>
+        <div class="gval red">Cautious*</div>
+        <div class="gchg red">US-Iran uncertainty</div>
+      </div>
+      <div class="global-item down">
+        <div class="gname">Rupee / USD</div>
+        <div class="gval red">~95.43</div>
+        <div class="gchg red">Persistent weakness</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="background:#fff8f0; border-left-color:#ff8c42;">
+      <strong>⚠️ Key Overnight Theme:</strong> US markets closed May at record highs (Nasdaq +8% for May). However, lingering US-Iran negotiation uncertainty is keeping Asian markets cautious on June 1 morning. Positive US tech sentiment could provide a floor for Indian IT stocks at open, but FII outflows and a weak rupee remain headwinds.
+    </div>
+    <div class="source-note">Sources: CNBC (June 1 Asia markets live), CNBC (May 28 US markets close)</div>
+  </div>
+
+  <!-- 2. TOP MOVERS -->
+  <div class="section">
+    <div class="section-title">🚀 2. Top Movers — May 29, 2026</div>
+
+    <p style="margin-bottom:14px; color:#555; font-size:13px;">Market fell broadly on May 29. Pharma showed relative strength; financials and auto were under pressure.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Stock (NSE Symbol)</th>
+          <th>Cap</th>
+          <th>Move</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>WOCKPHARMA</strong> (Wockhardt)</td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td class="td-green">+7.40%</td>
+          <td>Sector rotation into pharma; product approval pipeline</td>
+        </tr>
+        <tr>
+          <td><strong>INDOCO</strong> (Indoco Remedies)</td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td class="td-green">+3.46%</td>
+          <td>Pharma sector strength; export growth expectations</td>
+        </tr>
+        <tr>
+          <td><strong>SOLAR</strong> (Solar Industries India)</td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td class="td-green">+2.8%</td>
+          <td>Strong Q4 FY26 results; ₹2,050 Cr FY27 capex announced</td>
+        </tr>
+        <tr>
+          <td><strong>NHPC</strong> / <strong>NTPC</strong></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td class="td-green">+1.5% est.</td>
+          <td>Defensive play; power demand tailwind</td>
+        </tr>
+        <tr>
+          <td><strong>NARAYANA</strong> (Narayana Hrudayalaya)</td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td class="td-green">+2.2%</td>
+          <td>Strong Q4 FY26 financial results; healthcare demand robust</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:16px; margin-bottom:8px; font-weight:700; color:#e94560;">⬇ Notable Laggards</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Stock (NSE Symbol)</th>
+          <th>Cap</th>
+          <th>Move</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>BANKBARODA / SBIN</strong></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td class="td-red">-2.5% est.</td>
+          <td>FII selling; rate hold dampens re-rating hopes</td>
+        </tr>
+        <tr>
+          <td><strong>RELIANCE</strong></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td class="td-red">-1.8% est.</td>
+          <td>Broad market selloff; oil price uncertainty</td>
+        </tr>
+        <tr>
+          <td><strong>MARUTI</strong></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td class="td-red">-2.1% est.</td>
+          <td>Rupee weakness raises import cost concerns</td>
+        </tr>
+        <tr>
+          <td><strong>BAJFINANCE</strong></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td class="td-red">-2.3% est.</td>
+          <td>FII net selling pressure on NBFC/financial space</td>
+        </tr>
+        <tr>
+          <td><strong>INDUSINDBK</strong> (IndusInd Bank)</td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td class="td-red">-3.1% est.</td>
+          <td>Post Q4 FY26 investor presentation; margin concerns</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source-note">Sources: BusinessUpturn (Pharma sector stocks May 29), InvestyWise (Solar Industries, Narayana Hrudayalaya Q4 FY26)</div>
+  </div>
+
+  <!-- 3. FUNDAMENTAL PICKS -->
+  <div class="section">
+    <div class="section-title">🏆 3. Fundamental Picks — Screened for Quality</div>
+    <p style="margin-bottom:14px; color:#555; font-size:13px;">Stocks screened for: PEG &lt; 1.5, ROE &gt; 15%, D/E &lt; 0.5, Revenue/PAT Growth &gt; 15% YoY</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Cap</th>
+          <th>Key Metrics</th>
+          <th>Why it Qualifies</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ICICIBANK</strong><br><small>ICICI Bank</small></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td>ROE ~18%, D/E low, NIMs stable</td>
+          <td>Consistently strong asset quality; loan book growth ~15% YoY; well-positioned for rate environment</td>
+        </tr>
+        <tr>
+          <td><strong>SOLAR</strong><br><small>Solar Industries</small></td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td>ROE ~25%, Low debt, PAT ↑ 20%+</td>
+          <td>Defence & explosives; record Q4 FY26; ₹2,050 Cr FY27 capex signals confidence</td>
+        </tr>
+        <tr>
+          <td><strong>NARAYANA</strong><br><small>Narayana Hrudayalaya</small></td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td>ROE ~22%, Near-zero debt, Revenue ↑ 18%</td>
+          <td>Healthcare expansion; strong Q4 FY26; Cayman Islands business growing</td>
+        </tr>
+        <tr>
+          <td><strong>ITC</strong><br><small>ITC Ltd</small></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td>ROE ~28%, Zero net debt, FMCG growth 15%+</td>
+          <td>Diversified; hotels spin-off value unlock; strong cash flows + dividends</td>
+        </tr>
+        <tr>
+          <td><strong>PFC</strong><br><small>Power Finance Corp</small></td>
+          <td><span class="tag tag-large">Large</span></td>
+          <td>ROE ~20%, Low PE (~5x), PAT growth 15%+</td>
+          <td>Power sector capex beneficiary; strong book growth; very low PEG</td>
+        </tr>
+        <tr>
+          <td><strong>POLYCAB</strong><br><small>Polycab India</small></td>
+          <td><span class="tag tag-mid">Mid</span></td>
+          <td>ROE ~22%, D/E &lt; 0.1, Revenue ↑ 20%</td>
+          <td>Wires & cables demand surge from infra + real estate; premium brand positioning</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source-note">Sources: 5paisa (10 Fundamentally Strong Stocks 2026), Whalesbook (Indian Value Stocks 2026), Screener.in (Low PE High ROE), InvestyWise (Solar Industries, Narayana Q4 FY26)</div>
+  </div>
+
+  <!-- 4. TECHNICAL SIGNALS -->
+  <div class="section">
+    <div class="section-title">📈 4. Technical Signals to Watch</div>
+
+    <div class="signal-item">
+      <div class="si-left">
+        <div class="si-name">WOCKPHARMA — Wockhardt</div>
+        <div class="si-signal">+7.4% breakout on volume spike; watch ₹1,850 resistance</div>
+      </div>
+      <span class="si-badge si-bullish">Volume Breakout</span>
+    </div>
+    <div class="signal-item">
+      <div class="si-left">
+        <div class="si-name">SOLAR — Solar Industries</div>
+        <div class="si-signal">Strong Q4 result catalyst; above 50 DMA; institutional buying evident</div>
+      </div>
+      <span class="si-badge si-bullish">Fundamental + Technical</span>
+    </div>
+    <div class="signal-item">
+      <div class="si-left">
+        <div class="si-name">NIFTY 50 Index</div>
+        <div class="si-signal">RSI ~51 (neutral); range 23,362–23,938; watch 24,000 for bullish trigger</div>
+      </div>
+      <span class="si-badge si-neutral">Range-Bound</span>
+    </div>
+    <div class="signal-item">
+      <div class="si-left">
+        <div class="si-name">INDUSINDBK — IndusInd Bank</div>
+        <div class="si-signal">Underperforming; testing key support levels; below 200 DMA</div>
+      </div>
+      <span class="si-badge si-bearish">Breakdown Risk</span>
+    </div>
+    <div class="signal-item">
+      <div class="si-left">
+        <div class="si-name">PHARMA Sector (Nifty Pharma)</div>
+        <div class="si-signal">Relative outperformance vs Nifty 50; potential golden cross forming</div>
+      </div>
+      <span class="si-badge si-bullish">Sector Rotation</span>
+    </div>
+    <div class="signal-item">
+      <div class="si-left">
+        <div class="si-name">IT Sector (Nifty IT)</div>
+        <div class="si-signal">US Nasdaq at record highs → potential positive opening for TCS, Infy, HCLTech</div>
+      </div>
+      <span class="si-badge si-bullish">Global Tailwind</span>
+    </div>
+    <div class="source-note">Sources: 5paisa Nifty Outlook (June 1 2026), BusinessUpturn Pharma stocks (May 29)</div>
+  </div>
+
+  <!-- 5. NEWS & SENTIMENT -->
+  <div class="section">
+    <div class="section-title">📰 5. News & Sentiment</div>
+
+    <div class="fii-grid">
+      <div class="fii-card sell">
+        <div class="fc-label">FII Activity (May 29)</div>
+        <div class="fc-val">₹21,106 Cr</div>
+        <div class="fc-sub">⬇ Net SOLD (Cash Segment)</div>
+      </div>
+      <div class="fii-card buy">
+        <div class="fc-label">DII Activity (May 29)</div>
+        <div class="fc-val">₹16,764 Cr</div>
+        <div class="fc-sub">⬆ Net BOUGHT (Cash Segment)</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="background:#fde8ec; border-left-color:#e94560;">
+      <strong>FII Trend:</strong> Cumulative FY26 FII outflows now ~₹3.33 lakh crore — exceeding all of FY25. This is the primary structural headwind for Indian equities. DII support has been a crucial buffer, but the quantum of FII selling is concerning.
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">
+        1. RBI Likely to Hold Rates at June 3–5 MPC Meeting
+        <span class="news-impact impact-neutral">Neutral</span>
+      </div>
+      <div class="news-meta">Source: BusinessToday / SBI Research | May 31, 2026 — Despite inflation risks, RBI expected to hold repo at 5.25%. Rupee weakness and FII outflows constrain room for cuts. Banks and NBFCs may see muted re-rating.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">
+        2. Indian Rupee Falls to ~95.43/USD — Near Multi-Year Lows
+        <span class="news-impact impact-bearish">Bearish</span>
+      </div>
+      <div class="news-meta">Source: Bajaj Broking | Rupee weakened from ₹89.86 to ₹95.43 in 2026. Forex reserves down to ~$698B from peak of $728.5B. Negative for import-heavy sectors (auto, electronics). Positive for IT exporters and pharma.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">
+        3. US Markets at Record Highs — Nasdaq +8% in May
+        <span class="news-impact impact-bullish">Bullish Cue</span>
+      </div>
+      <div class="news-meta">Source: CNBC | S&P 500 at 7,580; Nasdaq at 26,973. Tech AI capex theme driving global rallies. Indian IT sector (TCS, Infosys, HCLTech) may gap up at open.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">
+        4. US-Iran Negotiations — Uncertainty Dampens Asian Sentiment
+        <span class="news-impact impact-bearish">Bearish Cue</span>
+      </div>
+      <div class="news-meta">Source: CNBC Asia Markets (June 1 Live) | Unresolved US-Iran deal creating caution across Asian markets Monday morning. Oil prices remain volatile — key watchpoint for India (net oil importer).</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">
+        5. Union Budget 2026: Public Capex ₹12.2 Lakh Crore; Biopharma Shakti ₹10,000 Cr
+        <span class="news-impact impact-bullish">Bullish Structural</span>
+      </div>
+      <div class="news-meta">Source: Groww Blog | Government's massive infra capex commitment supports capital goods, cement, and construction sectors for FY27. Biopharma Shakti creates multi-year tailwind for pharma/biotech companies.</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-headline">
+        6. SEBI Removes Calendar Spread Margin Benefit for Single-Stock Derivatives (Expiry Day)
+        <span class="news-impact impact-neutral">Regulatory</span>
+      </div>
+      <div class="news-meta">Source: SEBI Circular | Effective May 5, 2026. Increases cost of certain options strategies on expiry day. May reduce volumes but improves risk management. Broadly neutral for equity markets.</div>
+    </div>
+
+    <div class="source-note">Sources: BusinessToday, Bajaj Broking, CNBC, Groww Budget Blog, NSE/SEBI</div>
+  </div>
+
+  <!-- 6. ANNUAL REPORT HOTSPOTS -->
+  <div class="section">
+    <div class="section-title">📋 6. Annual Report & Concall Hotspots — Q4 FY26</div>
+
+    <p style="margin-bottom:14px; color:#555; font-size:13px;">Over 580 companies have filed Q4 FY26 results. Nifty 50 median PAT growth: <strong>+11.58%</strong>. Broader market median PAT growth: <strong>+21.56%</strong>. FY27 guidance is the key market-mover now.</p>
+
+    <div class="flag-box">
+      <div class="flag-title">🟢 Solar Industries India (SOLAR) — POSITIVE</div>
+      <ul>
+        <li>Landmark Q4 & FY26 performance reported</li>
+        <li>FY27 Capex guidance: ₹2,050 crore — significant expansion in defence & explosives</li>
+        <li>Management confident in order pipeline; export orders growing</li>
+        <li>No auditor concerns flagged</li>
+      </ul>
+    </div>
+
+    <div class="flag-box">
+      <div class="flag-title">🟢 Narayana Hrudayalaya (NARAYANA) — POSITIVE</div>
+      <ul>
+        <li>Strong Q4 FY26 financial growth; revenue + margins expanding</li>
+        <li>International (Cayman Islands) business contributing meaningfully</li>
+        <li>Management guidance: bed expansion plans in Tier 2 cities</li>
+        <li>No major related-party or pledge concerns</li>
+      </ul>
+    </div>
+
+    <div class="flag-box" style="background:#fde8ec; border-left-color:#e94560;">
+      <div class="flag-title" style="color:#c0002b;">🔴 IndusInd Bank (INDUSINDBK) — WATCH WITH CAUTION</div>
+      <ul>
+        <li>Q4 FY26 Investor Presentation published — margin pressure noted</li>
+        <li>Asset quality metrics under scrutiny post FY26 stress in microfinance</li>
+        <li>Management change earlier in year added uncertainty</li>
+        <li>Monitor RBI supervisory stance in June MPC meeting commentary</li>
+      </ul>
+    </div>
+
+    <div class="flag-box">
+      <div class="flag-title">🟡 SBI (SBIN) — MIXED</div>
+      <ul>
+        <li>SBI Q4 FY26 Analyst Presentation: strong loan growth but NIM compression visible</li>
+        <li>Government capex support positive for PSU banking</li>
+        <li>Repo rate hold limits near-term re-rating catalyst</li>
+        <li>Dividend yield supportive for long-term investors</li>
+      </ul>
+    </div>
+
+    <div class="source-note">Sources: InvestyWise (Solar Industries Q4 FY26, Narayana Q4 FY26), IndusInd Bank Investor Presentation, SBI Analyst Presentation Q4 FY26, ConCallIQ (Q4 FY26 Earnings Season)</div>
+  </div>
+
+  <!-- 7. SECTOR SPOTLIGHT -->
+  <div class="section">
+    <div class="section-title">🔦 7. Sector Spotlight — Indian Pharma & Healthcare</div>
+
+    <div class="sector-box">
+      <h3>💊 Pharma & Healthcare — OVERWEIGHT for June 2026</h3>
+      <p style="font-size:13px; margin-bottom:14px;">
+        <strong>Why Today?</strong> Pharma outperformed on May 29 despite a broad selloff — a clear sign of sector rotation into defensives. US FDA pipeline clearances, India's Biopharma Shakti initiative (₹10,000 Cr govt outlay), a weak rupee boosting export realizations, and Trump's pharma policy being benign for Indian generics all combine to make this the most actionable sector for June 2026.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Stock</th>
+            <th>Cap</th>
+            <th>Why Watch</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>WOCKPHARMA</strong><br><small>Wockhardt</small></td>
+            <td><span class="tag tag-mid">Mid</span></td>
+            <td>+7.4% on May 29; breakout momentum; antibiotic pipeline in focus</td>
+            <td>High debt historically; track balance sheet</td>
+          </tr>
+          <tr>
+            <td><strong>INDOCO</strong><br><small>Indoco Remedies</small></td>
+            <td><span class="tag tag-small">Small</span></td>
+            <td>Strong domestic + export balance; consistent profitability; low PE vs peers</td>
+            <td>Smaller scale; FDA inspection risk</td>
+          </tr>
+          <tr>
+            <td><strong>DRREDDY</strong><br><small>Dr. Reddy's Labs</small></td>
+            <td><span class="tag tag-large">Large</span></td>
+            <td>US generic leadership; strong R&D pipeline; beneficiary of weak rupee on exports</td>
+            <td>US pricing pressure; competition in key molecules</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="source-note">Sources: BusinessUpturn (Pharma May 29), Rupeezy (Best Pharma 2026), Groww Budget Blog (Biopharma Shakti)</div>
+  </div>
+
+  <!-- 8. DECISION FRAMEWORK -->
+  <div class="section">
+    <div class="section-title">⚖️ 8. Decision Framework — Buy / Watch / Avoid</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Stock (Symbol)</th>
+          <th>Action</th>
+          <th>One-Line Reasoning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SOLAR</strong> (Solar Industries)</td>
+          <td><span class="tag tag-buy">BUY</span></td>
+          <td>Landmark Q4 + ₹2,050 Cr FY27 capex; defence theme structural winner</td>
+        </tr>
+        <tr>
+          <td><strong>NARAYANA</strong> (Narayana Hrudayalaya)</td>
+          <td><span class="tag tag-buy">BUY</span></td>
+          <td>Strong healthcare demand, near-zero debt, margin expansion visible</td>
+        </tr>
+        <tr>
+          <td><strong>DRREDDY</strong> (Dr Reddy's)</td>
+          <td><span class="tag tag-buy">BUY</span></td>
+          <td>Sector tailwind + weak rupee boosts exports; strong US generic pipeline</td>
+        </tr>
+        <tr>
+          <td><strong>ICICIBANK</strong></td>
+          <td><span class="tag tag-buy">BUY</span></td>
+          <td>Best-in-class private bank; asset quality strong; rate hold not a long-term headwind</td>
+        </tr>
+        <tr>
+          <td><strong>ITC</strong></td>
+          <td><span class="tag tag-watch">WATCH</span></td>
+          <td>Hotels spin-off value unlock pending; strong fundamentals but near-term catalyst unclear</td>
+        </tr>
+        <tr>
+          <td><strong>POLYCAB</strong></td>
+          <td><span class="tag tag-watch">WATCH</span></td>
+          <td>Infrastructure capex beneficiary; high ROE but expensive valuations post rally</td>
+        </tr>
+        <tr>
+          <td><strong>PFC</strong></td>
+          <td><span class="tag tag-watch">WATCH</span></td>
+          <td>Very cheap valuation but FII selling in PSU financials; buy on dips below ₹450</td>
+        </tr>
+        <tr>
+          <td><strong>SBIN</strong> (SBI)</td>
+          <td><span class="tag tag-watch">WATCH</span></td>
+          <td>Rate hold limits upside; NIM compression visible; dividend yield provides floor</td>
+        </tr>
+        <tr>
+          <td><strong>INDUSINDBK</strong></td>
+          <td><span class="tag tag-avoid">AVOID</span></td>
+          <td>Margin pressure + management uncertainty + below 200 DMA; wait for clarity</td>
+        </tr>
+        <tr>
+          <td><strong>MARUTI</strong></td>
+          <td><span class="tag tag-avoid">AVOID</span></td>
+          <td>Rupee at ₹95+ raises import cost fears; demand slowdown risk in premium segment</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="source-note">Framework based on: Q4 FY26 results, FII/DII activity, technical levels, macro environment (RBI, rupee, global cues)</div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p><strong>Report Summary:</strong> Indian markets closed sharply lower on May 29 (Nifty -1.5%, Sensex -1.44%) amid heavy FII selling (₹21,106 Cr net sold). June 1 opens with positive US cues (Nasdaq +8% in May, S&P at record highs) but Asia is cautious due to US-Iran uncertainty. RBI rate decision on June 3–5 is the next major domestic catalyst. Pharma and IT are the sectors to watch at open.</p>
+    <br>
+    <p>⚠️ <strong>Disclaimer:</strong> This is AI-generated research for informational purposes only. Data is compiled from publicly available sources as of the report generation time. Not SEBI-registered investment advice. Past performance is not indicative of future results. Please consult a SEBI-registered financial advisor before making any investment decisions. All investment decisions carry risk of capital loss.</p>
+    <br>
+    <p style="color:#bbb;">Generated: June 1, 2026, 07:15 AM IST | Sources: Business Standard, CNBC, BusinessToday, Bajaj Broking, InvestyWise, 5paisa, Groww, SBI Research, ConCallIQ, Screener.in, NSE India</p>
+  </div>
+
+</div>
+</body>
+</html>

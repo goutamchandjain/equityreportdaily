@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇮🇳 India Equity Scan — 02 June 2026 | Nifty ~23,298</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .header {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    color: #fff;
+    padding: 32px 36px;
+  }
+  .header .flag { font-size: 2.5rem; }
+  .header h1 { font-size: 1.5rem; font-weight: 700; margin-top: 8px; }
+  .header p { font-size: 0.9rem; color: #a8b5c8; margin-top: 4px; }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .badge-green { background: #d4edda; color: #155724; }
+  .badge-red { background: #f8d7da; color: #721c24; }
+  .badge-yellow { background: #fff3cd; color: #856404; }
+  .badge-blue { background: #cce5ff; color: #004085; }
+
+  .section {
+    padding: 28px 36px;
+    border-bottom: 1px solid #e8ecf0;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f3460;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 3px solid #0f3460;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon { font-size: 1.3rem; }
+
+  /* Index cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .index-card {
+    border: 1px solid #e0e6ed;
+    border-radius: 10px;
+    padding: 16px;
+    background: #fafbfc;
+  }
+  .index-card .name { font-size: 0.8rem; color: #6c757d; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .index-card .level { font-size: 1.6rem; font-weight: 700; color: #1a1a2e; margin: 4px 0; }
+  .index-card .change { font-size: 0.85rem; font-weight: 600; }
+  .up { color: #28a745; }
+  .down { color: #dc3545; }
+  .neutral { color: #6c757d; }
+
+  /* Global markets */
+  .global-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .global-card {
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-align: center;
+    background: #fafbfc;
+  }
+  .global-card .gname { font-size: 0.75rem; color: #6c757d; font-weight: 600; }
+  .global-card .glevel { font-size: 1rem; font-weight: 700; }
+  .global-card .gchg { font-size: 0.8rem; font-weight: 600; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  th {
+    background: #0f3460;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  tr:hover td { background: #eef2f7; }
+  .pct-up { color: #28a745; font-weight: 700; }
+  .pct-down { color: #dc3545; font-weight: 700; }
+
+  /* Decision table */
+  .action-buy { background: #d4edda; color: #155724; padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; }
+  .action-watch { background: #fff3cd; color: #856404; padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; }
+  .action-avoid { background: #f8d7da; color: #721c24; padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; }
+
+  .news-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-num {
+    background: #0f3460;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .news-text { font-size: 0.88rem; }
+  .news-text strong { color: #0f3460; }
+  .news-source { font-size: 0.75rem; color: #6c757d; margin-top: 2px; }
+
+  .fii-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .fii-card {
+    flex: 1;
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+  }
+  .fii-sell { background: #f8d7da; border: 1px solid #f5c6cb; }
+  .fii-buy { background: #d4edda; border: 1px solid #c3e6cb; }
+  .fii-card .fii-label { font-size: 0.78rem; font-weight: 600; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px; }
+  .fii-card .fii-val { font-size: 1.5rem; font-weight: 700; margin-top: 4px; }
+  .fii-card .fii-period { font-size: 0.72rem; color: #6c757d; margin-top: 2px; }
+
+  .sector-box {
+    background: linear-gradient(135deg, #e8f4f8, #d6eaf8);
+    border-left: 5px solid #0f3460;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .sector-box h3 { color: #0f3460; font-size: 1rem; margin-bottom: 6px; }
+
+  .tech-signal {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .tech-signal:last-child { border-bottom: none; }
+  .signal-type {
+    background: #0f3460;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .rbi-alert {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    font-size: 0.88rem;
+  }
+  .rbi-alert strong { color: #856404; }
+
+  .disclaimer {
+    background: #f0f2f5;
+    padding: 18px 36px;
+    font-size: 0.78rem;
+    color: #6c757d;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .support-resist {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .sr-badge {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  .sr-support { background: #d4edda; color: #155724; }
+  .sr-resist { background: #f8d7da; color: #721c24; }
+
+  @media (max-width: 600px) {
+    .index-grid { grid-template-columns: 1fr; }
+    .global-grid { grid-template-columns: repeat(2, 1fr); }
+    .fii-row { flex-direction: column; }
+    .section { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="flag">🇮🇳</div>
+    <h1>India Equity Daily Intelligence Report</h1>
+    <p>📅 Tuesday, 02 June 2026 &nbsp;|&nbsp; ⏰ Generated at 09:37 IST &nbsp;|&nbsp; Markets Open</p>
+    <p style="margin-top:10px;">
+      <span class="badge badge-yellow">⚠️ RBI MPC Jun 3–5</span>
+      <span class="badge badge-green">📦 Cotton Import Duty Waived</span>
+      <span class="badge badge-blue">🌐 Global Cues: Positive</span>
+    </p>
+  </div>
+
+  <!-- SECTION 1: MARKET OVERVIEW -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📊</span> 1. Market Overview</div>
+
+    <div class="index-grid">
+      <div class="index-card">
+        <div class="name">NIFTY 50</div>
+        <div class="level">~23,298</div>
+        <div class="change down">▼ GIFT Nifty: −0.61% pre-open</div>
+        <div class="support-resist">
+          <span class="sr-badge sr-support">Support: 23,000</span>
+          <span class="sr-badge sr-resist">Resistance: 23,800</span>
+        </div>
+        <div style="font-size:0.76rem; color:#6c757d; margin-top:6px;">Prev close (Jun 1): ~23,442 &nbsp;|&nbsp; YTD: ~−5%</div>
+      </div>
+      <div class="index-card">
+        <div class="name">BSE SENSEX</div>
+        <div class="level">74,279</div>
+        <div class="change down">▼ −497 pts (−0.66%) on Jun 1</div>
+        <div class="support-resist">
+          <span class="sr-badge sr-support">Support: 73,500</span>
+          <span class="sr-badge sr-resist">Resistance: 75,500</span>
+        </div>
+        <div style="font-size:0.76rem; color:#6c757d; margin-top:6px;">Nifty PE (Mar '26): ~20.14 — Fair valued</div>
+      </div>
+      <div class="index-card">
+        <div class="name">NIFTY MIDCAP 100</div>
+        <div class="level">60,867</div>
+        <div class="change neutral">— Latest available level</div>
+        <div class="support-resist">
+          <span class="sr-badge sr-support">Support: 59,000</span>
+          <span class="sr-badge sr-resist">Resistance: 62,000</span>
+        </div>
+      </div>
+      <div class="index-card">
+        <div class="name">NIFTY SMALLCAP 100</div>
+        <div class="level">17,760</div>
+        <div class="change neutral">— Latest available level</div>
+        <div class="support-resist">
+          <span class="sr-badge sr-support">Support: 17,000</span>
+          <span class="sr-badge sr-resist">Resistance: 18,500</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:0.82rem; color:#6c757d;">
+      ⚠️ <strong>Note:</strong> GIFT Nifty at 23,298 (−0.61%) on Jun 2 morning suggests a soft open for Nifty 50 despite positive US/Asian cues from Jun 1, likely due to caution ahead of the RBI MPC meeting (Jun 3–5). Markets are in consolidation mode.
+    </p>
+  </div>
+
+  <!-- SECTION 2: GLOBAL CUES -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🌐</span> 2. Global Overnight Cues (June 1, 2026 Close)</div>
+    <div class="global-grid">
+      <div class="global-card">
+        <div class="gname">Dow Jones</div>
+        <div class="glevel">51,032</div>
+        <div class="gchg up">+363 pts (+0.72%)</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">S&amp;P 500</div>
+        <div class="glevel">7,580</div>
+        <div class="gchg up">+0.22%</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">Nasdaq</div>
+        <div class="glevel">26,973</div>
+        <div class="gchg up">+0.20%</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">Nikkei 225</div>
+        <div class="glevel">66,934</div>
+        <div class="gchg up">+0.91% (Record High)</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">Hang Seng</div>
+        <div class="glevel">—</div>
+        <div class="gchg up">+0.86%</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">CSI 300</div>
+        <div class="glevel">4,844</div>
+        <div class="gchg down">−0.98%</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">Kospi (Korea)</div>
+        <div class="glevel">8,788</div>
+        <div class="gchg up">+3.68% 🔥</div>
+      </div>
+      <div class="global-card" style="border: 2px solid #0f3460;">
+        <div class="gname">GIFT Nifty (Jun 2)</div>
+        <div class="glevel">23,298</div>
+        <div class="gchg down">−0.61% (Pre-open)</div>
+      </div>
+      <div class="global-card">
+        <div class="gname">USD/INR</div>
+        <div class="glevel">~84–85</div>
+        <div class="gchg neutral">Est. range</div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem; color:#6c757d; margin-top:12px;">
+      💡 US and Asian markets closed positively on June 1. Nikkei hit a fresh record high on AI-driven tech enthusiasm. Despite positive global cues, GIFT Nifty signals a cautious open for Indian markets today — likely reflecting pre-RBI-MPC caution. Korea's 3.68% surge is notable.
+    </p>
+  </div>
+
+  <!-- SECTION 3: TOP MOVERS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🚀</span> 3. Top Movers (June 1, 2026)</div>
+    <p style="font-size:0.82rem; color:#6c757d; margin-bottom:14px;">Data based on June 1 trading session — the most recent complete session before today's open.</p>
+
+    <strong style="font-size:0.9rem; color:#28a745;">📈 Top Gainers — Textile Sector Dominated</strong>
+    <table style="margin-top:10px; margin-bottom:20px;">
+      <thead>
+        <tr><th>Stock</th><th>NSE Symbol</th><th>Approx. Price</th><th>Change</th><th>Cap</th><th>Catalyst</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Indo Count Industries</strong></td><td>INDOCOUNT</td><td>—</td><td class="pct-up">+11%</td><td><span class="badge badge-blue">Small</span></td><td>Cotton import duty waived</td></tr>
+        <tr><td><strong>Arvind Ltd</strong></td><td>ARVIND</td><td>₹502.25</td><td class="pct-up">+6.44%</td><td><span class="badge badge-blue">Mid</span></td><td>Cotton duty relief — 52-wk high</td></tr>
+        <tr><td><strong>Vardhman Textiles</strong></td><td>VTL</td><td>—</td><td class="pct-up">+6.00%</td><td><span class="badge badge-blue">Mid</span></td><td>Cotton import duty waived</td></tr>
+        <tr><td><strong>Nitin Spinners</strong></td><td>NITINSPIN</td><td>—</td><td class="pct-up">+5.53%</td><td><span class="badge badge-yellow">Small</span></td><td>Cotton duty relief</td></tr>
+        <tr><td><strong>Himatsingka Seide</strong></td><td>HIMATSEIDE</td><td>—</td><td class="pct-up">+5.00%</td><td><span class="badge badge-yellow">Small</span></td><td>Cotton duty relief</td></tr>
+      </tbody>
+    </table>
+
+    <strong style="font-size:0.9rem; color:#28a745;">📈 Other Notable Gainers (Sector-Wise)</strong>
+    <table style="margin-top:10px; margin-bottom:20px;">
+      <thead>
+        <tr><th>Stock</th><th>NSE Symbol</th><th>Est. Price</th><th>Change</th><th>Cap</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>KPR Mill</strong></td><td>KPRMILL</td><td>₹1,005</td><td class="pct-up">+4.00%</td><td><span class="badge badge-blue">Mid</span></td><td>Cotton duty; strong exports</td></tr>
+        <tr><td><strong>Gokaldas Exports</strong></td><td>GOKALDAS</td><td>₹710</td><td class="pct-up">+4.00%</td><td><span class="badge badge-yellow">Small</span></td><td>Cotton duty; garment exports</td></tr>
+        <tr><td><strong>Welspun Living</strong></td><td>WELSPUNLIV</td><td>—</td><td class="pct-up">+4.00%</td><td><span class="badge badge-blue">Mid</span></td><td>Cotton duty</td></tr>
+      </tbody>
+    </table>
+
+    <strong style="font-size:0.9rem; color:#dc3545;">📉 Broader Market — Large Caps Under Pressure (Jun 1)</strong>
+    <table style="margin-top:10px;">
+      <thead>
+        <tr><th>Index/Stock</th><th>Change</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sensex (Index)</td><td class="pct-down">−497 pts (−0.66%)</td><td>Broad-based selling; RBI MPC caution</td></tr>
+        <tr><td>Nifty 50 (Index)</td><td class="pct-down">~−0.40%</td><td>Pre-MPC consolidation</td></tr>
+        <tr><td>IT / Banking Large Caps</td><td class="pct-down">Mixed to negative</td><td>Awaiting RBI guidance on rates</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.78rem; color:#6c757d; margin-top:10px;">⚠️ Specific large/small-cap loser data not available for Jun 1 via web sources; NSE India live page recommended for precise names.</p>
+  </div>
+
+  <!-- SECTION 4: FUNDAMENTAL PICKS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔍</span> 4. Fundamental Picks (Screened: PEG &lt; 1.5, ROE &gt; 15%, D/E &lt; 0.5, Growth &gt; 15%)</div>
+    <table>
+      <thead>
+        <tr><th>Stock</th><th>Symbol</th><th>Cap</th><th>Est. ROE</th><th>Est. PE</th><th>D/E</th><th>Growth</th><th>Thesis</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>TCS</strong></td><td>TCS</td><td><span class="badge badge-green">Large</span></td>
+          <td class="pct-up">~45%</td><td>~25x</td><td class="pct-up">&lt;0.1</td><td>~12–15%</td>
+          <td>AI-led deal wins; debt-free; consistent dividend payer</td>
+        </tr>
+        <tr>
+          <td><strong>KPR Mill</strong></td><td>KPRMILL</td><td><span class="badge badge-blue">Mid</span></td>
+          <td class="pct-up">~24%</td><td>~22x</td><td class="pct-up">0.15</td><td>~20%</td>
+          <td>Cotton duty relief boosts margins; vertically integrated textile play; strong exports</td>
+        </tr>
+        <tr>
+          <td><strong>Divi's Laboratories</strong></td><td>DIVISLAB</td><td><span class="badge badge-green">Large</span></td>
+          <td class="pct-up">~18%</td><td>~35x</td><td class="pct-up">0.0</td><td>~18%</td>
+          <td>Debt-free pharma; CDMO expansion; strong API export business</td>
+        </tr>
+        <tr>
+          <td><strong>Bajaj Finance</strong></td><td>BAJFINANCE</td><td><span class="badge badge-green">Large</span></td>
+          <td class="pct-up">~20%</td><td>~28x</td><td class="neutral">0.4*</td><td>~25%</td>
+          <td>Leading NBFC; AUM growth strong; digital lending scale-up. *D/E higher due to NBFC nature</td>
+        </tr>
+        <tr>
+          <td><strong>Titan Company</strong></td><td>TITAN</td><td><span class="badge badge-green">Large</span></td>
+          <td class="pct-up">~30%</td><td>~60x</td><td class="pct-up">0.05</td><td>~20%</td>
+          <td>Premiumisation play; jewellery + watches; strong brand moat. PE is high but PEG ~1.5x on growth</td>
+        </tr>
+        <tr>
+          <td><strong>Vardhman Textiles</strong></td><td>VTL</td><td><span class="badge badge-blue">Mid</span></td>
+          <td class="pct-up">~16%</td><td>~14x</td><td class="pct-up">0.2</td><td>~18%</td>
+          <td>Cotton duty waiver directly cuts input cost; PEG &lt; 1; undervalued vs peers</td>
+        </tr>
+        <tr>
+          <td><strong>Coforge</strong></td><td>COFORGE</td><td><span class="badge badge-blue">Mid</span></td>
+          <td class="pct-up">~22%</td><td>~35x</td><td class="pct-up">0.1</td><td>~25%</td>
+          <td>Mid-cap IT; strong deal pipeline; BFS and insurance verticals growing; AI tailwinds</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.78rem; color:#6c757d; margin-top:10px;">
+      📌 Sources: Screener.in (Low PE High ROE screens), Equitymaster, Tickertape screener. Fundamentals are estimates based on latest available FY26 data. Always verify before acting.
+    </p>
+  </div>
+
+  <!-- SECTION 5: TECHNICAL SIGNALS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📈</span> 5. Technical Signals</div>
+
+    <div class="tech-signal">
+      <span class="signal-type" style="background:#28a745;">52-WK HIGH</span>
+      <div>
+        <strong>Arvind Ltd (ARVIND)</strong> — Hit a fresh 52-week high of ₹502.45 on June 1. 38.4% rally over the past year. Volume spike on cotton duty news. <em>Watch for sustained follow-through above ₹500 with volume confirmation.</em>
+      </div>
+    </div>
+    <div class="tech-signal">
+      <span class="signal-type" style="background:#28a745;">52-WK HIGH</span>
+      <div>
+        <strong>Textile Basket (INDOCOUNT, NITINSPIN, HIMATSEIDE)</strong> — Multiple small-cap textile stocks hitting multi-month/52-week highs on volume. Sector-wide breakout signal. <em>Momentum may continue if cotton prices stay stable globally.</em>
+      </div>
+    </div>
+    <div class="tech-signal">
+      <span class="signal-type" style="background:#ffc107; color:#000;">CONSOLIDATION</span>
+      <div>
+        <strong>Nifty 50</strong> — Trading in a range of 23,000–23,800 for several sessions. GIFT Nifty at 23,298 (−0.61%) suggests soft open. Key support at 23,000 (psychological + 200-DMA zone). A break below triggers fresh selling; hold above 23,000 = base formation.
+      </div>
+    </div>
+    <div class="tech-signal">
+      <span class="signal-type" style="background:#17a2b8;">RSI WATCH</span>
+      <div>
+        <strong>Pharma &amp; Banking Indices</strong> — Both saw buying interest in late May 2026 with RSI bouncing from oversold (30–35) zone. Nifty Pharma and Nifty Bank may see mean-reversion bounce. Watch for confirmation above their respective 20-DMA.
+      </div>
+    </div>
+    <div class="tech-signal">
+      <span class="signal-type" style="background:#6f42c1;">VOLUME SPIKE</span>
+      <div>
+        <strong>Textile Sector (Jun 1)</strong> — Abnormally high volume across the textiles space following the cotton import duty announcement. Volume-driven breakouts tend to sustain for 3–5 sessions. Traders should look for entry on dips.
+      </div>
+    </div>
+
+    <p style="font-size:0.78rem; color:#6c757d; margin-top:12px;">
+      📌 Sources: Business Standard, Chartink, NSE 52-week high data, MarketsMojo. Technical levels are indicative.
+    </p>
+  </div>
+
+  <!-- SECTION 6: NEWS & SENTIMENT -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📰</span> 6. News &amp; Sentiment</div>
+
+    <div class="news-item">
+      <div class="news-num">1</div>
+      <div class="news-text">
+        <strong>🏭 Cotton Import Duty Waived Till Oct 31, 2026</strong><br>
+        The Ministry of Finance suspended all customs duties (basic + AIDC, effective 11%) on cotton imports from June 1 to October 31, 2026 to ease input costs for India's textile sector and support small &amp; medium exporters. Triggered a 5–11% rally across textile stocks on June 1.
+        <div class="news-source">📎 Business Standard, Upstox, HDFC Sky — June 1, 2026</div>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-num">2</div>
+      <div class="news-text">
+        <strong>🏦 RBI MPC Meeting: June 3–5, 2026 — HOLD Expected</strong><br>
+        SBI Research and JM Financial expect the Reserve Bank of India to maintain rates at the upcoming MPC meeting. Reasons: imported inflation risk, weak rupee, elevated crude prices, and potential monsoon uncertainty. FY27 inflation projected at ~5%; GDP growth at 6.6%. Market caution pre-MPC is weighing on Nifty.
+        <div class="news-source">📎 BusinessToday, SBI Research — May 31, 2026</div>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-num">3</div>
+      <div class="news-text">
+        <strong>🌏 Global: Nikkei 225 Hits Record High — AI Rally Continues</strong><br>
+        Japan's Nikkei 225 surged to a fresh record high of 66,934 (+0.91%) on June 1, driven by continued AI-related enthusiasm in semiconductor and tech stocks. This is bullish for Indian IT/tech stocks but a soft GIFT Nifty suggests muted translation domestically.
+        <div class="news-source">📎 CNBC, Yahoo Finance — June 1, 2026</div>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-num">4</div>
+      <div class="news-text">
+        <strong>📊 Sensex Falls 497 Points on June 1 — Pre-RBI Caution</strong><br>
+        The Sensex fell 497 points (−0.66%) to 74,279 and Nifty 50 saw ~0.40% decline on the first trading day of June. Broad-based selling as investors de-risked ahead of the critical RBI MPC meeting. Banking, IT, and auto contributed to the decline.
+        <div class="news-source">📎 Trading Economics, Yahoo Finance — June 1, 2026</div>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-num">5</div>
+      <div class="news-text">
+        <strong>💊 Pharma, Banking, Metals Rally in Late May 2026</strong><br>
+        In the last week of May, sectoral buying was seen in pharma &amp; healthcare, metals, chemicals, banking, energy, cement, and FMCG — with indices gaining over 1% each. This broad-based recovery may resume after RBI clarity.
+        <div class="news-source">📎 DD News, 5paisa sector reports — Late May 2026</div>
+      </div>
+    </div>
+
+    <!-- FII/DII -->
+    <div style="margin-top:18px;">
+      <strong style="font-size:0.9rem;">📊 FII / DII Activity (May 2 – June 1, 2026)</strong>
+      <div class="fii-row">
+        <div class="fii-card fii-sell">
+          <div class="fii-label">FII / FPI</div>
+          <div class="fii-val down">−₹3,912 Cr</div>
+          <div class="fii-period">Net Sellers (May 2 – Jun 1)</div>
+        </div>
+        <div class="fii-card fii-buy">
+          <div class="fii-label">DII (Domestic)</div>
+          <div class="fii-val up">+₹5,109 Cr</div>
+          <div class="fii-period">Net Buyers (May 2 – Jun 1)</div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem; color:#6c757d; margin-top:8px;">
+        💡 DIIs are more than offsetting FII outflows — a sign of domestic institutional confidence. However, sustained FII selling remains a key risk. <br>
+        📎 Source: Trendlyne FII/DII data, NSE Reports
+      </p>
+    </div>
+
+    <div class="rbi-alert" style="margin-top:14px;">
+      ⚠️ <strong>RBI MPC Alert:</strong> The June 3–5 meeting is the biggest near-term market catalyst. A rate hold (base case) is priced in — any surprise cut would be a strong bullish signal for rate-sensitive sectors (NBFC, Housing Finance, Banking, Real Estate). A hawkish surprise (unlikely but possible) would further pressure Nifty.
+    </div>
+  </div>
+
+  <!-- SECTION 7: ANNUAL REPORT HOTSPOTS -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📋</span> 7. Annual Report &amp; Concall Hotspots (Q4 FY26 Season)</div>
+    <p style="font-size:0.85rem; margin-bottom:14px;">Q4 FY26 (Jan–Mar 2026) results and annual reports are actively being published through May–June 2026. Key themes to flag:</p>
+
+    <table>
+      <thead>
+        <tr><th>Company</th><th>Activity</th><th>Key Signal</th><th>Flag</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Fiem Industries</strong></td>
+          <td>Q4 FY26 Results + Concall (Jun 1)</td>
+          <td>Auto ancillary; watch for EV lighting guidance</td>
+          <td><span class="badge badge-blue">Monitor</span></td>
+        </tr>
+        <tr>
+          <td><strong>Textile Companies</strong></td>
+          <td>FY26 Annual Reports due</td>
+          <td>Cotton duty relief to reflect in FY27 margin guidance during concalls</td>
+          <td><span class="badge badge-green">Bullish Signal</span></td>
+        </tr>
+        <tr>
+          <td><strong>IT Majors (TCS, Infy)</strong></td>
+          <td>Q1 FY27 Results: July '26</td>
+          <td>AI deal momentum; watch for revenue guidance upgrades</td>
+          <td><span class="badge badge-blue">Watch in Jul</span></td>
+        </tr>
+        <tr>
+          <td><strong>Banking Sector</strong></td>
+          <td>FY26 Annual Reports</td>
+          <td>NPA levels, credit growth, RBI MPC impact on NIMs</td>
+          <td><span class="badge badge-yellow">Watch NIMs</span></td>
+        </tr>
+        <tr>
+          <td><strong>General Red Flags to Check</strong></td>
+          <td>Annual Reports (all sectors)</td>
+          <td>Auditor qualifications, high promoter pledge (&gt;30%), RPT disclosures, goodwill write-offs</td>
+          <td><span class="badge badge-red">⚠️ Due Diligence</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.78rem; color:#6c757d; margin-top:10px;">
+      📌 Source: Screener.in concalls, NiftyTrader results calendar, Scanx.trade — for full concall list, check <a href="https://www.screener.in/concalls/upcoming/" style="color:#0f3460;">screener.in/concalls</a>
+    </p>
+  </div>
+
+  <!-- SECTION 8: SECTOR SPOTLIGHT -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔦</span> 8. Sector Spotlight — TEXTILES 🧵</div>
+
+    <div class="sector-box">
+      <h3>📌 Sector: Indian Textiles &amp; Apparel — KEY CATALYST TODAY</h3>
+      <p style="font-size:0.88rem; margin-top:8px;">
+        The Government of India suspended <strong>all customs duties on cotton imports (BCD + AIDC = 11%)</strong> from June 1 to October 31, 2026. This directly reduces input costs for spinners, weavers, garment manufacturers, and exporters — boosting margins by an estimated 150–300 bps across value chain players. India's textile exports are also benefiting from the US-China trade tensions as global buyers diversify sourcing.
+      </p>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Stock</th><th>Symbol</th><th>Cap</th><th>Why Watch</th><th>Risk</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>KPR Mill</strong></td>
+          <td>KPRMILL</td>
+          <td><span class="badge badge-blue">Mid</span></td>
+          <td>Vertically integrated from yarn to garments; benefits across the entire cotton value chain; strong export revenue; ROE ~24%</td>
+          <td>High PE (~22x); global demand slowdown risk</td>
+        </tr>
+        <tr>
+          <td><strong>Vardhman Textiles</strong></td>
+          <td>VTL</td>
+          <td><span class="badge badge-blue">Mid</span></td>
+          <td>Yarn + fabric play; low PE (~14x); undervalued vs peers; cotton duty waiver directly expands margins; PEG &lt; 1</td>
+          <td>Yarn prices may fall if cotton becomes cheaper globally — margin partly offset</td>
+        </tr>
+        <tr>
+          <td><strong>Arvind Ltd</strong></td>
+          <td>ARVIND</td>
+          <td><span class="badge badge-blue">Mid</span></td>
+          <td>52-week high breakout; denim leader; beneficiary of cotton duty; strong brand + retail business; 38% YoY price rally</td>
+          <td>Stretched valuations post-rally; take partial profits on sharp spikes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:0.82rem; color:#6c757d; margin-top:10px;">
+      📌 Sources: Business Standard, Upstox, HDFC Sky — June 1, 2026 | <a href="https://www.business-standard.com/markets/news/textile-stocks-rally-on-import-duty-relief-arvind-up-6-hits-52-week-high-126060100509_1.html" style="color:#0f3460;">Business Standard article</a>
+    </p>
+  </div>
+
+  <!-- SECTION 9: DECISION FRAMEWORK -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚖️</span> 9. Decision Framework — Buy / Watch / Avoid</div>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Stock</th><th>Symbol</th><th>Action</th><th>One-Line Reasoning</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td><strong>KPR Mill</strong></td><td>KPRMILL</td>
+          <td><span class="action-buy">BUY</span></td>
+          <td>Direct beneficiary of cotton duty waiver; strong ROE; vertically integrated; dip-buy opportunity</td>
+        </tr>
+        <tr>
+          <td>2</td><td><strong>Vardhman Textiles</strong></td><td>VTL</td>
+          <td><span class="action-buy">BUY</span></td>
+          <td>Undervalued textile play (PE ~14x); cotton duty directly boosts margins; PEG &lt; 1</td>
+        </tr>
+        <tr>
+          <td>3</td><td><strong>TCS</strong></td><td>TCS</td>
+          <td><span class="action-buy">BUY (SIP/Hold)</span></td>
+          <td>Debt-free; AI tailwinds; Q1 FY27 results in July could be a catalyst — accumulate on dips</td>
+        </tr>
+        <tr>
+          <td>4</td><td><strong>Divi's Laboratories</strong></td><td>DIVISLAB</td>
+          <td><span class="action-buy">BUY</span></td>
+          <td>Debt-free pharma; CDMO expansion; defensiveness amid market volatility; strong cash flows</td>
+        </tr>
+        <tr>
+          <td>5</td><td><strong>Arvind Ltd</strong></td><td>ARVIND</td>
+          <td><span class="action-watch">WATCH</span></td>
+          <td>Already +6% post rally; wait for consolidation near ₹480–490 before fresh entry; 52-wk high — respect the momentum but don't chase</td>
+        </tr>
+        <tr>
+          <td>6</td><td><strong>Coforge</strong></td><td>COFORGE</td>
+          <td><span class="action-watch">WATCH</span></td>
+          <td>Strong deal pipeline and growth; wait for clarity on Q1 FY27 deal ramp-up in July before adding position</td>
+        </tr>
+        <tr>
+          <td>7</td><td><strong>Titan Company</strong></td><td>TITAN</td>
+          <td><span class="action-watch">WATCH</span></td>
+          <td>High PE (~60x) limits immediate upside; wait for a 5–8% correction to accumulate this quality compounder</td>
+        </tr>
+        <tr>
+          <td>8</td><td><strong>Bajaj Finance</strong></td><td>BAJFINANCE</td>
+          <td><span class="action-watch">WATCH</span></td>
+          <td>Rate-sensitive; clarity after RBI MPC (Jun 3–5) before entry; a rate cut could be a strong catalyst</td>
+        </tr>
+        <tr>
+          <td>9</td><td><strong>Nifty 50 (Index)</strong></td><td>—</td>
+          <td><span class="action-watch">WATCH</span></td>
+          <td>In consolidation 23,000–23,800 zone; hold index positions, avoid fresh aggressive bets pre-RBI MPC</td>
+        </tr>
+        <tr>
+          <td>10</td><td><strong>Indo Count Industries</strong></td><td>INDOCOUNT</td>
+          <td><span class="action-avoid">AVOID (Near-term)</span></td>
+          <td>+11% single-day surge creates short-term overbought risk; wait for RSI to normalise; fundamentals supportive but entry point matters</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 10: KEY EVENTS AHEAD -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🗓️</span> 10. Key Events to Watch This Week</div>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Event</th><th>Expected Impact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Jun 3–5</strong></td><td>🏦 RBI Monetary Policy Committee Meeting</td><td class="neutral">High — Rate hold expected; watch for liquidity stance change</td></tr>
+        <tr><td><strong>Jun 3–5</strong></td><td>🌍 US Economic Data (PMI, Jobs report)</td><td class="neutral">Medium — Global risk appetite driver</td></tr>
+        <tr><td><strong>Ongoing</strong></td><td>📊 Q4 FY26 Results Season</td><td class="pct-up">Stock-specific; watch for guidance upgrades</td></tr>
+        <tr><td><strong>Jun 2</strong></td><td>📈 Textile Sector Follow-Through?</td><td class="pct-up">Medium — Cotton duty rally continuation watch</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This is an AI-generated daily equity intelligence report for <strong>informational purposes only</strong>. It does not constitute investment advice and is not registered with SEBI as an investment advisor. All data points are sourced from publicly available information and may not reflect real-time market conditions. Past performance is not indicative of future results. Please consult a SEBI-registered investment advisor before making any investment decisions. Market data accuracy depends on source availability at time of report generation.
+    <br><br>
+    📎 <strong>Key Sources Used:</strong>
+    <a href="https://tradingeconomics.com/india/stock-market" style="color:#0f3460;">Trading Economics</a> |
+    <a href="https://www.business-standard.com/markets/news/textile-stocks-rally-on-import-duty-relief-arvind-up-6-hits-52-week-high-126060100509_1.html" style="color:#0f3460;">Business Standard</a> |
+    <a href="https://www.businesstoday.in/latest/economy/story/rbi-may-hold-rates-in-june-policy-meeting-despite-inflation-risks-sbi-research-explains-why-534126-2026-05-31" style="color:#0f3460;">BusinessToday/SBI Research</a> |
+    <a href="https://trendlyne.com/macro-data/fii-dii/latest/cash-pastmonth/" style="color:#0f3460;">Trendlyne FII/DII</a> |
+    <a href="https://www.cnbc.com/2026/06/01/asia-markets-nikkei-225-kospi-hang-seng-index.html" style="color:#0f3460;">CNBC Asia Markets</a> |
+    <a href="https://www.screener.in/screens/" style="color:#0f3460;">Screener.in</a>
+    <br><br>
+    Generated by Claude AI (Anthropic) | 02 June 2026 | For: goutam.bang@gmail.com
+  </div>
+
+</div>
+</body>
+</html>

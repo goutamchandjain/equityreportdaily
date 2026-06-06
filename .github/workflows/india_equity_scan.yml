@@ -1,0 +1,41 @@
+name: 🇮🇳 India Equity Daily Scan
+
+on:
+  schedule:
+    # 7:00 AM IST = 1:30 AM UTC, Monday–Friday
+    - cron: '30 1 * * 1-5'
+  workflow_dispatch:
+    # Allows manual trigger from the GitHub Actions UI anytime
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Generate and email report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: goutam.bang@gmail.com
+        run: python scripts/generate_report.py
+
+      - name: Upload HTML report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: equity-scan-${{ github.run_id }}
+          path: output/*.html
+          retention-days: 30

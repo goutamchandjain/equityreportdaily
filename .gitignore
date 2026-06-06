@@ -1,0 +1,11 @@
+# Generated reports (don't commit to git)
+output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# macOS
+.DS_Store
