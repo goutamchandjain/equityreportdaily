@@ -2,10 +2,8 @@ name: 🇮🇳 India Equity Daily Scan
 
 on:
   schedule:
-    # 7:00 AM IST = 1:30 AM UTC, Monday–Friday
     - cron: '30 1 * * 1-5'
   workflow_dispatch:
-    # Allows manual trigger from the GitHub Actions UI anytime
 
 jobs:
   generate-report:
@@ -16,13 +14,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
+        run: pip install anthropic yfinance requests pytz
 
       - name: Generate and email report
         env:
@@ -32,7 +25,7 @@ jobs:
           RECIPIENT_EMAIL: goutam.bang@gmail.com
         run: python scripts/generate_report.py
 
-      - name: Upload HTML report as artifact
+      - name: Upload report as artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
